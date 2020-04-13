@@ -76,7 +76,7 @@ def ground_search(success, input_text):
         driver.find_element_by_id('iSearch').send_keys(input_text)
 
         # 검색 구장 선택
-        time.sleep(0.5)
+        time.sleep(1)
         ground_list = driver.find_element_by_css_selector('#ui-id-1').find_elements_by_tag_name('li')
         ground_list[0].click()
 
@@ -87,9 +87,6 @@ def ground_search(success, input_text):
 
         ground_dates.clear()
         for time_content in timetables:
-            # schedule_dic = { 
-            #     time_content.text : time_content.get_attribute('value')
-            # }
             ground_dates.append(time_content.text)
         print(ground_dates)
 
