@@ -1,7 +1,6 @@
 # fc-passion-page
 
 > FC Passion 홈페이지⚽︎
-> flask + mongoDB 사용
 
 
 ### Pages
@@ -11,3 +10,6 @@
 * 경기일정
 * 갤러리
 * 회원명단
+
+### Usage
+* flask + mongoDB 사용
