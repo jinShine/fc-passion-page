@@ -1,180 +1,420 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>FC 열정 축구단</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
-	</head>
-	<body>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Resume - SB Admin Pro</title>
+        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navigation Start-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-transparent navbar-dark fixed-top">
+                        <div class="container">
+                            <a class="navbar-brand text-white" href="index.html">FC Passion</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto mr-lg-5">
+                                    <li class="nav-item"><a class="nav-link" href="index.html">공지사항</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="index.html">경기일정</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="index.html">갤러리</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="index.html">회원명단</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navigation End-->
 
-		<!-- Header -->
-			<header id="header" class="alt">
-				<div class="logo">
-					<a href="index.html">FC Passion</a>
-				</div>
-				<a href="#menu">Menu</a>
-			</header>
+                    <!-- Banner Start-->
+                    <header class="page-header page-header-dark bg-img-cover overlay overlay-60" style='background-image: url("static/images/slide_image01.jpg")'>
+                        <div class="page-header-content py-15">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xl-6 col-lg-8">
+                                        <h1 class="page-header-title">열정 축구단</h1>
+                                        <p class="page-header-text mb-5">축구 및 풋살을 사랑하는 사람들의 모임</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="svg-border-angled text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor"><polygon points="0,100 100,0 100,100"></polygon></svg>
+                        </div>
+                    </header>
+                    <!-- Banner End-->
 
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="index.html">공지사항</a></li>
-					<li><a href="generic.html">경기일정</a></li>
-					<li><a href="elements.html">갤러리</a></li>
-					<li><a href="elements.html">회원명단</a></li>
-				</ul>
-			</nav>
+                    <section class="bg-light py-10">
+                        <div class="container">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <h2 class="mb-1">공지사항</h2>
+                                <div>
+                                    <a class="text-arrow-icon small" href="#!">더 보기<i data-feather="arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <hr class="mb-4" />
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-0 col-md-6 mb-5">
+                                    <a class="card post-preview lift h-100" href="#!">
+                                        <div class="card-body body-ellipsis mb-2">
+                                            <h5 class="card-title">Invest In Social Impact</h5>
+                                            <p class="card-text">
+                                                Expose the truth, problem-solvers impact mobilized green spaces.
+                                                problem-solvers impact mobilized green spaces.
+                                                problem-solvers impact mobilized green spaces.
+                                                problem-solvers impact mobilized green spaces.
+                                                problem-solvers impact mobilized green spaces.
+                                                problem-solvers impact mobilized green spaces.
+                                                problem-solvers impact mobilized green spaces.
+                                                problem-solvers impact mobilized green spaces.
+                                            </p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="post-preview-meta">
+                                                <div class="post-preview-meta-details">
+                                                    <div class="post-preview-meta-details-name">Aariz Fischer</div>
+                                                    <div class="post-preview-meta-details-date">Feb 4</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-4 col-lg-0 col-md-6 mb-5">
+                                    <a class="card post-preview lift h-100" href="#!">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Invest In Social Impact</h5>
+                                            <p class="card-text">Expose the truth, problem-solvers impact mobilized green spaces.</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="post-preview-meta">
+                                                <div class="post-preview-meta-details">
+                                                    <div class="post-preview-meta-details-name">Aariz Fischer</div>
+                                                    <div class="post-preview-meta-details-date">Feb 4</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-4 col-lg-0 col-md-6 mb-5">
+                                    <a class="card post-preview lift h-100" href="#!">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Invest In Social Impact</h5>
+                                            <p class="card-text">Expose the truth, problem-solvers impact mobilized green spaces.</p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="post-preview-meta">
+                                                <div class="post-preview-meta-details">
+                                                    <div class="post-preview-meta-details-name">Aariz Fischer</div>
+                                                    <div class="post-preview-meta-details-date">Feb 4</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="svg-border-rounded text-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
+                        </div>
+                    </section>
 
-		<!-- Banner -->
-			<section class="banner full">
-				<article>
-					<img src="{{ url_for('static', filename='images/slide_image01.jpg') }}" alt="" />
-					<div class="inner">
-						<header>
-							<p>열정 축구단</p>
-							<h2>FC Passion</h2>
-						</header>
-					</div>
-				</article>
-				<article>
-					<img src="{{ url_for('static', filename='images/slide_image02.jpg') }}" alt="" />
-					<div class="inner">
-						<header>
-							<p>열정 축구단</p>
-							<h2>FC Passion</h2>
-						</header>
-					</div>
-				</article>
-				<article>
-					<img src="{{ url_for('static', filename='images/slide_image03.jpg') }}"  alt="" />
-					<div class="inner">
-						<header>
-							<p>열정 축구단</p>
-							<h2>FC Passion</h2>
-						</header>
-					</div>
-				</article>
-				<article>
-					<img src="{{ url_for('static', filename='images/slide_image04.jpg') }}"  alt="" />
-					<div class="inner">
-						<header>
-							<p>열정 축구단</p>
-							<h2>FC Passion</h2>
-						</header>
-					</div>
-				</article>
-			</section>
+                    <section class="bg-white py-10">
+                        <div class="container">
+                            <div class="text-uppercase-expanded small mb-2">Experience</div>
+                            <hr class="mt-0 mb-5" />
+                            <div class="row mb-5">
+                                <div class="col-lg-8">
+                                    <h4 class="mb-0">Senior Sales Analyst</h4>
+                                    <p class="lead">Intelitec Solutions</p>
+                                    <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
+                                </div>
+                                <div class="col-lg-4 text-lg-right"><div class="text-gray-400 small">May 2018 - Present</div></div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="col-lg-8">
+                                    <h4 class="mb-0">Marketing Analyst</h4>
+                                    <p class="lead">Shout Media Productions</p>
+                                    <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
+                                </div>
+                                <div class="col-lg-4 text-lg-right"><div class="text-gray-400 small">August 2015 - May 2018</div></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h4 class="mb-0">Sales Representative</h4>
+                                    <p class="lead">Gamby Enterprises</p>
+                                    <p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>
+                                </div>
+                                <div class="col-lg-4 text-lg-right"><div class="text-gray-400 small">June 2011 - August 2015</div></div>
+                            </div>
+                        </div>
+                        <div class="svg-border-angled text-light">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor"><polygon points="0,100 100,0 100,100"></polygon></svg>
+                        </div>
+                    </section>
+                    <section class="bg-light py-10">
+                        <div class="container">
+                            <div class="text-uppercase-expanded small mb-2">Education</div>
+                            <hr class="mt-0 mb-5" />
+                            <div class="row mb-5">
+                                <div class="col-lg-8">
+                                    <h4 class="mb-0">University of Colorado Boulder</h4>
+                                    <p class="lead">Master of Business Administration (MBA)</p>
+                                    <p>Graduated from University of Colorado Boulder's lockstep evening MBA program</p>
+                                </div>
+                                <div class="col-lg-4 text-lg-right"><div class="text-gray-400 small">September 2013 - May 2015</div></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <h4 class="mb-0">Clarcton University</h4>
+                                    <p class="lead">Bachelor of Science</p>
+                                    <p>Graduated with a degree in Marketing, with a specialization in product management and a minor in Finance</p>
+                                </div>
+                                <div class="col-lg-4 text-lg-right"><div class="text-gray-400 small">August 2009 - May 2013</div></div>
+                            </div>
+                        </div>
+                        <div class="svg-border-angled text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor"><polygon points="0,100 100,0 100,100"></polygon></svg>
+                        </div>
+                    </section>
+                    <section class="bg-white py-10">
+                        <div class="container">
+                            <div class="text-uppercase-expanded small mb-2">Skills</div>
+                            <hr class="mt-0 mb-5" />
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <p>Attention to detail and a general sense of product viability are my specialties. I am motivated to provide value in a team environment, and I am committed to creating the best possible experience for customers.</p>
+                                    <ul class="mb-0 text-gray-700">
+                                        <li>Market analysis</li>
+                                        <li>Supply chain management</li>
+                                        <li>Business plan preparation</li>
+                                        <li>Technological entrepreneurship</li>
+                                        <li>Report generation</li>
+                                        <li>Presentation creation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="svg-border-angled text-light">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor"><polygon points="0,100 100,0 100,100"></polygon></svg>
+                        </div>
+                    </section>
+                    <section class="bg-light py-10">
+                        <div class="container">
+                            <div class="text-uppercase-expanded small mb-2">Interests</div>
+                            <hr class="mt-0 mb-5" />
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <p>Apart from being a marketing analyst, I enjoy most of my time being outdoors. In the winter, I am an avid skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking, free climbing, and kayaking.</p>
+                                    <p>When forced indoors, I follow a number of sci-fi and fantasy genre movies and television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest technology advancements in the marketing management world.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="svg-border-angled text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor"><polygon points="0,100 100,0 100,100"></polygon></svg>
+                        </div>
+                    </section>
+                    
+                    <!-- 갤러리 Start -->
+                    <section class="bg-light py-10">
+                        <div class="container">
+                            <div class="d-flex align-items-center justify-content-between mb-3">
+                                <h2 class="mb-1">갤러리</h2>
+                                <div>
+                                    <a class="text-arrow-icon small" href="#!">더 보기<i data-feather="arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <hr class="mb-4" />
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                                    <a class="card lift h-100" href="#!">
+                                        <img class="card-img-top" src="https://source.unsplash.com/tG36rvCeqng/800x500" alt="..." />
+                                        <div class="card-body p-3">
+                                            <div class="card-title small mb-0">Gray Bicycle</div>
+                                            <div class="text-xs text-gray-500">Readcaster, CO &middot; 2 days ago</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                                    <a class="card lift h-100" href="#!">
+                                        <img class="card-img-top" src="https://source.unsplash.com/tG36rvCeqng/800x500" alt="..." />
+                                        <div class="card-body p-3">
+                                            <div class="card-title small mb-0">Gray Bicycle</div>
+                                            <div class="text-xs text-gray-500">Readcaster, CO &middot; 2 days ago</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                                    <a class="card lift h-100" href="#!">
+                                        <img class="card-img-top" src="https://source.unsplash.com/tG36rvCeqng/800x500" alt="..." />
+                                        <div class="card-body p-3">
+                                            <div class="card-title small mb-0">Gray Bicycle</div>
+                                            <div class="text-xs text-gray-500">Readcaster, CO &middot; 2 days ago</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                                    <a class="card lift h-100" href="#!">
+                                        <img class="card-img-top" src="https://source.unsplash.com/tG36rvCeqng/800x500" alt="..." />
+                                        <div class="card-body p-3">
+                                            <div class="card-title small mb-0">Gray Bicycle</div>
+                                            <div class="text-xs text-gray-500">Readcaster, CO &middot; 2 days ago</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                                    <a class="card lift h-100" href="#!">
+                                        <img class="card-img-top" src="https://source.unsplash.com/tG36rvCeqng/800x500" alt="..." />
+                                        <div class="card-body p-3">
+                                            <div class="card-title small mb-0">Gray Bicycle</div>
+                                            <div class="text-xs text-gray-500">Readcaster, CO &middot; 2 days ago</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                                    <a class="card lift h-100" href="#!">
+                                        <img class="card-img-top" src="https://source.unsplash.com/tG36rvCeqng/800x500" alt="..." />
+                                        <div class="card-body p-3">
+                                            <div class="card-title small mb-0">Gray Bicycle</div>
+                                            <div class="text-xs text-gray-500">Readcaster, CO &middot; 2 days ago</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                                    <a class="card lift h-100" href="#!">
+                                        <img class="card-img-top" src="https://source.unsplash.com/tG36rvCeqng/800x500" alt="..." />
+                                        <div class="card-body p-3">
+                                            <div class="card-title small mb-0">Gray Bicycle</div>
+                                            <div class="text-xs text-gray-500">Readcaster, CO &middot; 2 days ago</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                                    <a class="card lift h-100" href="#!">
+                                        <img class="card-img-top" src="https://source.unsplash.com/tG36rvCeqng/800x500" alt="..." />
+                                        <div class="card-body p-3">
+                                            <div class="card-title small mb-0">Gray Bicycle</div>
+                                            <div class="text-xs text-gray-500">Readcaster, CO &middot; 2 days ago</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                                    <a class="card lift h-100" href="#!">
+                                        <img class="card-img-top" src="https://source.unsplash.com/tG36rvCeqng/800x500" alt="..." />
+                                        <div class="card-body p-3">
+                                            <div class="card-title small mb-0">Gray Bicycle</div>
+                                            <div class="text-xs text-gray-500">Readcaster, CO &middot; 2 days ago</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                                    <a class="card lift h-100" href="#!">
+                                        <img class="card-img-top" src="https://source.unsplash.com/tG36rvCeqng/800x500" alt="..." />
+                                        <div class="card-body p-3">
+                                            <div class="card-title small mb-0">Gray Bicycle</div>
+                                            <div class="text-xs text-gray-500">Readcaster, CO &middot; 2 days ago</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                                    <a class="card lift h-100" href="#!">
+                                        <img class="card-img-top" src="https://source.unsplash.com/tG36rvCeqng/800x500" alt="..." />
+                                        <div class="card-body p-3">
+                                            <div class="card-title small mb-0">Gray Bicycle</div>
+                                            <div class="text-xs text-gray-500">Readcaster, CO &middot; 2 days ago</div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-lg-4 col-md-6 mb-5">
+                                    <a class="card lift h-100" href="#!">
+                                        <img class="card-img-top" src="https://source.unsplash.com/tG36rvCeqng/800x500" alt="..." />
+                                        <div class="card-body p-3">
+                                            <div class="card-title small mb-0">Gray Bicycle</div>
+                                            <div class="text-xs text-gray-500">Readcaster, CO &middot; 2 days ago</div>
+                                        </div>
+                                    </a>
+                                </div>
+                        </div>
+                    </section>
+                    <!-- 갤러리 End -->
 
-		<!-- One -->
-			<section id="one" class="wrapper style2">
-				<div class="inner">
-					<div class="grid-style">
+                    <!-- Contact Start -->
+                    <section class="bg-light py-10">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8 text-center">
+                                    <h2>CONTACT</h2>
+                                    <p class="mb-5">동대문구에서 활동하고 있으며, 지역에 상관없이 가입 및 매치 문의 환영합니다 ^^</p>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="icon-stack icon-stack-lg bg-orange text-white mb-3"><i data-feather="mail"></i></div>
+                                                    <div class="small"><a href="mailto:seungjin429@gmail.com" title="(FC_Passion)홈페이지 보고 연락 드렸습니다.">seungjin429@gmail.com</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="icon-stack icon-stack-lg bg-green text-white mb-3"><i data-feather="smartphone"></i></div>
+                                                    <div class="small">010-9959-8910/div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="svg-border-rounded text-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
+                        </div>
+                    </section>
+                    <!-- Contact End -->
 
-						<div>
-							<div class="box">
-								<div class="image fit">
-									<img src="images/pic02.jpg" alt="" />
-								</div>
-								<div class="content">
-									<header class="align-center">
-										<p>maecenas sapien feugiat ex purus</p>
-										<h2>Lorem ipsum dolor</h2>
-									</header>
-									<p> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada.</p>
-									<footer class="align-center">
-										<a href="#" class="button alt">Learn More</a>
-									</footer>
-								</div>
-							</div>
-						</div>
+                </main>
+            </div>
 
-						<div>
-							<div class="box">
-								<div class="image fit">
-									<img src="images/pic03.jpg" alt="" />
-								</div>
-								<div class="content">
-									<header class="align-center">
-										<p>mattis elementum sapien pretium tellus</p>
-										<h2>Vestibulum sit amet</h2>
-									</header>
-									<p> Cras aliquet urna ut sapien tincidunt, quis malesuada elit facilisis. Vestibulum sit amet tortor velit. Nam elementum nibh a libero pharetra elementum. Maecenas feugiat ex purus, quis volutpat lacus placerat malesuada.</p>
-									<footer class="align-center">
-										<a href="#" class="button alt">Learn More</a>
-									</footer>
-								</div>
-							</div>
-						</div>
+            <!-- Footer Start -->
+            <div id="layoutDefault_footer">
+                <footer class="footer pt-10 pb-5 mt-auto bg-dark footer-dark">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="footer-brand">CONTACT</div>
+                                <hr class="mt-0 mb-3" />
+                                    <p class="lead mb-0 mb-1">동대문구에서 활동하고 있으며, 지역에 상관없이 가입 및 매치 문의 환영합니다 ^^</p>
+                                    <p class="lead mb-0 mb-1">010-9959-8910</p>
+                                    <a href="mailto:seungjin429@gmail.com" title="(FC_Passion)홈페이지 보고 연락 드렸습니다.">seungjin429@gmail.com</a>
+                                <div class="icon-list-social mt-3 mb-5">
+                                    <a class="icon-list-social-link" href="https://www.instagram.com/fc_passion_jangan/?hl=ko">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-6 small">Copyright &copy; Your Website 2020</div>
+                            <div class="col-md-6 text-md-right small">
+                                <a href="javascript:void(0);">Privacy Policy</a>
+                                &middot;
+                                <a href="javascript:void(0);">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- Footer End -->
 
-					</div>
-				</div>
-			</section>
-
-		<!-- Two -->
-			<section id="two" class="wrapper style3">
-				<div class="inner">
-					<header class="align-center">
-						<p>Nam vel ante sit amet libero scelerisque facilisis eleifend vitae urna</p>
-						<h2>Morbi maximus justo</h2>
-					</header>
-				</div>
-			</section>
-
-		<!-- Three -->
-			<section id="three" class="wrapper style2">
-				<div class="inner">
-					<header class="align-center">
-						<p class="special">Nam vel ante sit amet libero scelerisque facilisis eleifend vitae urna</p>
-						<h2>Morbi maximus justo</h2>
-					</header>
-					<div class="gallery">
-						<div>
-							<div class="image fit">
-								<a href="#"><img src="images/pic01.jpg" alt="" /></a>
-							</div>
-						</div>
-						<div>
-							<div class="image fit">
-								<a href="#"><img src="images/pic02.jpg" alt="" /></a>
-							</div>
-						</div>
-						<div>
-							<div class="image fit">
-								<a href="#"><img src="images/pic03.jpg" alt="" /></a>
-							</div>
-						</div>
-						<div>
-							<div class="image fit">
-								<a href="#"><img src="images/pic04.jpg" alt="" /></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="container">
-					<ul class="icons">
-						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-					</ul>
-				</div>
-				<div class="copyright">
-					&copy; Untitled. All rights reserved.
-				</div>
-			</footer>
-
-		<!-- Scripts -->
-			<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-			<script src="{{ url_for('static', filename='js/jquery.scrollex.min.js') }}"></script>
-			<script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
-			<script src="{{ url_for('static', filename='js/util.js') }}"></script>
-			<script src="{{ url_for('static', filename='js/main.js') }}"></script>
-
-	</body>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    </body>
 </html>
