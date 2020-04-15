@@ -1,7 +1,7 @@
 # fc-passion-page
 
 > FC Passion 홈페이지⚽︎
-
+> flask + mongoDB 사용
 
 
 ### Pages
