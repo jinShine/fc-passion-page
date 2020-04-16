@@ -7,10 +7,17 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>열정 축구단</title>
-        <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
+        <link href="{{ url_for('static', filename='css/ui_styles.css') }}" rel="stylesheet" />
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+
+        <!-- JS -->
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="{{ url_for('static', filename='js/ui_scripts.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/index.js') }}"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -19,14 +26,14 @@
                     <!-- Navigation Start-->
                     <nav class="navbar navbar-marketing navbar-expand-lg bg-transparent navbar-dark fixed-top">
                         <div class="container">
-                            <a class="navbar-brand text-white" href="index.html">FC Passion</a>
+                            <a class="navbar-brand text-white" href="/">FC Passion</a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto mr-lg-5">
-                                    <li class="nav-item"><a class="nav-link" href="index.html">소개</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="index.html">공지사항</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/introduce">소개</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/notice">공지사항</a></li>
                                     <li class="nav-item"><a class="nav-link" href="index.html">경기일정</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="index.html">갤러리</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/login">갤러리</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -396,8 +403,5 @@
             <!-- Footer End -->
 
         </div>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
     </body>
 </html>
