@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Resume - SB Admin Pro</title>
+        <title>열정 축구단</title>
         <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
@@ -23,10 +23,10 @@
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto mr-lg-5">
+                                    <li class="nav-item"><a class="nav-link" href="index.html">소개</a></li>
                                     <li class="nav-item"><a class="nav-link" href="index.html">공지사항</a></li>
                                     <li class="nav-item"><a class="nav-link" href="index.html">경기일정</a></li>
                                     <li class="nav-item"><a class="nav-link" href="index.html">갤러리</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="index.html">회원명단</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -45,18 +45,18 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="svg-border-angled text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor"><polygon points="0,100 100,0 100,100"></polygon></svg>
+                        <div class="svg-border-rounded text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
                         </div>
                     </header>
                     <!-- Banner End-->
-
-                    <section class="bg-light py-10">
+                    
+                    <section class="bg-white py-10">
                         <div class="container">
                             <div class="d-flex align-items-center justify-content-between mb-3">
                                 <h2 class="mb-1">공지사항</h2>
                                 <div>
-                                    <a class="text-arrow-icon small" href="#!">더 보기<i data-feather="arrow-right"></i></a>
+                                    <a class="btn btn-sm btn-primary d-inline-flex align-items-center" href="#!">더 보기<i class="ml-1" data-feather="arrow-right"></i></a>
                                 </div>
                             </div>
                             <hr class="mb-4" />
@@ -120,104 +120,87 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="svg-border-rounded text-dark">
+                        <!-- <div class="svg-border-rounded text-dark">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
-                        </div>
+                        </div> -->
                     </section>
+
+                    <hr class="my-0" />
 
                     <section class="bg-white py-10">
                         <div class="container">
-                            <div class="text-uppercase-expanded small mb-2">Experience</div>
-                            <hr class="mt-0 mb-5" />
-                            <div class="row mb-5">
-                                <div class="col-lg-8">
-                                    <h4 class="mb-0">Senior Sales Analyst</h4>
-                                    <p class="lead">Intelitec Solutions</p>
-                                    <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
-                                </div>
-                                <div class="col-lg-4 text-lg-right"><div class="text-gray-400 small">May 2018 - Present</div></div>
-                            </div>
-                            <div class="row mb-5">
-                                <div class="col-lg-8">
-                                    <h4 class="mb-0">Marketing Analyst</h4>
-                                    <p class="lead">Shout Media Productions</p>
-                                    <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
-                                </div>
-                                <div class="col-lg-4 text-lg-right"><div class="text-gray-400 small">August 2015 - May 2018</div></div>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h2 class="mb-0">경기 일정</h2>
+                                <a class="btn btn-sm btn-primary d-inline-flex align-items-center" href="#!">더 보기<i class="ml-1" data-feather="arrow-right"></i></a>
                             </div>
                             <div class="row">
-                                <div class="col-lg-8">
-                                    <h4 class="mb-0">Sales Representative</h4>
-                                    <p class="lead">Gamby Enterprises</p>
-                                    <p>Collaboratively administrate empowered markets via plug-and-play networks. Dynamically procrastinate B2C users after installed base benefits. Dramatically visualize customer directed convergence without revolutionary ROI.</p>
+                                <div class="col-lg-4 mb-5 mb-lg-5">
+                                    <a class="card lift h-100" href="#!">
+
+                                        <!-- map content start -->
+                                        <div class="text-center">
+                                            <!--Google map-->
+                                            <div id="map-container-google-8" class="z-depth-1-half map-container-5">
+                                            <iframe src="https://maps.google.com/maps?q=Barcelona&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                                frameborder="0" style="border:0;" allowfullscreen>
+                                            </iframe>
+                                            </div>
+                                        </div>
+                                        <!-- map content end -->
+
+                                        <div class="card-body">
+                                            <h3 class="text-primary mb-0">토모 스포츠</h3>
+                                            <div class="small text-gray-800 font-weight-500">4월 30일</div>
+                                            <div class="small text-gray-500">Sartalik, GA</div>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="col-lg-4 text-lg-right"><div class="text-gray-400 small">June 2011 - August 2015</div></div>
-                            </div>
-                        </div>
-                        <div class="svg-border-angled text-light">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor"><polygon points="0,100 100,0 100,100"></polygon></svg>
-                        </div>
-                    </section>
-                    <section class="bg-light py-10">
-                        <div class="container">
-                            <div class="text-uppercase-expanded small mb-2">Education</div>
-                            <hr class="mt-0 mb-5" />
-                            <div class="row mb-5">
-                                <div class="col-lg-8">
-                                    <h4 class="mb-0">University of Colorado Boulder</h4>
-                                    <p class="lead">Master of Business Administration (MBA)</p>
-                                    <p>Graduated from University of Colorado Boulder's lockstep evening MBA program</p>
+                                <div class="col-lg-4 mb-5 mb-lg-5">
+                                    <a class="card lift h-100" href="#!">
+
+                                        <!-- map content start -->
+                                        <div class="text-center">
+                                            <!--Google map-->
+                                            <div id="map-container-google-8" class="z-depth-1-half map-container-5">
+                                            <iframe src="https://m.map.naver.com/search2/site.nhn?query=조이전농프라자&sm=sug&style=v5&code=18850843#/map"
+                                                frameborder="0" style="border:0;" allowfullscreen>
+                                            </iframe>
+                                            </div>
+                                        </div>
+                                        <!-- map content end -->
+
+                                        <div class="card-body">
+                                            <h3 class="text-primary mb-0">$556,999</h3>
+                                            <div class="small text-gray-800 font-weight-500">5 bd | 3 ba | 2,420 sqft</div>
+                                            <div class="small text-gray-500">Sartalik, GA</div>
+                                        </div>
+                                    </a>
                                 </div>
-                                <div class="col-lg-4 text-lg-right"><div class="text-gray-400 small">September 2013 - May 2015</div></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <h4 class="mb-0">Clarcton University</h4>
-                                    <p class="lead">Bachelor of Science</p>
-                                    <p>Graduated with a degree in Marketing, with a specialization in product management and a minor in Finance</p>
-                                </div>
-                                <div class="col-lg-4 text-lg-right"><div class="text-gray-400 small">August 2009 - May 2013</div></div>
-                            </div>
-                        </div>
-                        <div class="svg-border-angled text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor"><polygon points="0,100 100,0 100,100"></polygon></svg>
-                        </div>
-                    </section>
-                    <section class="bg-white py-10">
-                        <div class="container">
-                            <div class="text-uppercase-expanded small mb-2">Skills</div>
-                            <hr class="mt-0 mb-5" />
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <p>Attention to detail and a general sense of product viability are my specialties. I am motivated to provide value in a team environment, and I am committed to creating the best possible experience for customers.</p>
-                                    <ul class="mb-0 text-gray-700">
-                                        <li>Market analysis</li>
-                                        <li>Supply chain management</li>
-                                        <li>Business plan preparation</li>
-                                        <li>Technological entrepreneurship</li>
-                                        <li>Report generation</li>
-                                        <li>Presentation creation</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="svg-border-angled text-light">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor"><polygon points="0,100 100,0 100,100"></polygon></svg>
-                        </div>
-                    </section>
-                    <section class="bg-light py-10">
-                        <div class="container">
-                            <div class="text-uppercase-expanded small mb-2">Interests</div>
-                            <hr class="mt-0 mb-5" />
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <p>Apart from being a marketing analyst, I enjoy most of my time being outdoors. In the winter, I am an avid skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking, free climbing, and kayaking.</p>
-                                    <p>When forced indoors, I follow a number of sci-fi and fantasy genre movies and television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest technology advancements in the marketing management world.</p>
+                                <div class="col-lg-4 mb-5 mb-lg-5">
+                                    <a class="card lift h-100" href="#!">
+
+                                        <!-- map content start -->
+                                        <div class="text-center">
+                                            <!--Google map-->
+                                            <div id="map-container-google-8" class="z-depth-1-half map-container-5">
+                                            <iframe src="https://maps.google.com/maps?q=Barcelona&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                                frameborder="0" style="border:0;" allowfullscreen>
+                                            </iframe>
+                                            </div>
+                                        </div>
+                                        <!-- map content end -->
+
+                                        <div class="card-body">
+                                            <h3 class="text-primary mb-0">$556,999</h3>
+                                            <div class="small text-gray-800 font-weight-500">5 bd | 3 ba | 2,420 sqft</div>
+                                            <div class="small text-gray-500">Sartalik, GA</div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="svg-border-angled text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" fill="currentColor"><polygon points="0,100 100,0 100,100"></polygon></svg>
+                        <div class="svg-border-rounded text-light">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
                         </div>
                     </section>
                     
@@ -227,7 +210,7 @@
                             <div class="d-flex align-items-center justify-content-between mb-3">
                                 <h2 class="mb-1">갤러리</h2>
                                 <div>
-                                    <a class="text-arrow-icon small" href="#!">더 보기<i data-feather="arrow-right"></i></a>
+                                    <a class="btn btn-sm btn-primary d-inline-flex align-items-center" href="#!">더 보기<i class="ml-1" data-feather="arrow-right"></i></a>
                                 </div>
                             </div>
                             <hr class="mb-4" />
@@ -364,7 +347,7 @@
                                             <div class="card">
                                                 <div class="card-body">
                                                     <div class="icon-stack icon-stack-lg bg-green text-white mb-3"><i data-feather="smartphone"></i></div>
-                                                    <div class="small">010-9959-8910/div>
+                                                    <div class="small">010-9959-8910</div>
                                                 </div>
                                             </div>
                                         </div>
