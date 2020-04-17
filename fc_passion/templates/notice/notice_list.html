@@ -30,7 +30,7 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto mr-lg-5">
                                     <li class="nav-item"><a class="nav-link" href="/introduce">소개</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="/notice">공지사항</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/notice/list">공지사항</a></li>
                                     <li class="nav-item"><a class="nav-link" href="index.html">경기일정</a></li>
                                     <li class="nav-item"><a class="nav-link" href="/login">갤러리</a></li>
                                 </ul>
@@ -57,180 +57,117 @@
                             <div class="d-flex align-items-center justify-content-between mb-3">
                                 <h2 class="mb-1">공지사항</h2>
                                 <div>
-                                    <a class="btn btn-primary d-inline-flex align-items-center" href="#!">글쓰기<i class="ml-1" data-feather="arrow-right"></i></a>
+                                    <a class="btn btn-primary d-inline-flex align-items-center" href="/notice/write">글쓰기<i class="ml-1" data-feather="arrow-right"></i></a>
                                 </div>
                             </div>
                             <!-- Header end -->
 
                             <hr class="mb-4" />
 
-                            <div class="row justify-content-center">
-                                <div class="col-lg-10">
-                                    <div class="post-archive-tag">Category 'UI'</div>
-                                    <a class="post-archive-item" href="#!"
-                                        ><h5>Boots on the Ground, Inclusive Thought Provoking Ideas</h5>
-                                        <p>Empower communities and energize engaging ideas; scale and impact do-gooders while disruptring industries. Venture philanthropy benefits corporations and people by moving the needle.</p></a
-                                    >
-                                    <div class="post-archive-meta">
-                                        <img class="post-archive-meta-img" src="https://source.unsplash.com/QAB-WJcbgJk/100x100" />
-                                        <div class="post-archive-meta-details">
-                                            <div class="post-archive-meta-details-name">Valerie Luna</div>
-                                            <div class="post-archive-meta-details-date">Feb 5 &middot; 6 min read</div>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-0 col-md-6 mb-5">
+                                    <a class="card post-preview lift h-100" href="#!">
+                                        <div class="card-body body-ellipsis mb-2">
+                                            <h5 class="card-title">Invest In Social Impact</h5>
+                                            <p class="card-text">
+                                                Expose the truth, problem-solvers impact mobilized green spaces.
+                                                problem-solvers impact mobilized green spaces.
+                                                problem-solvers impact mobilized green spaces.
+                                                problem-solvers impact mobilized green spaces.
+                                                problem-solvers impact mobilized green spaces.
+                                                problem-solvers impact mobilized green spaces.
+                                                problem-solvers impact mobilized green spaces.
+                                                problem-solvers impact mobilized green spaces.
+                                            </p>
                                         </div>
-                                    </div>
-                                    <hr class="my-5" />
-                                    <a class="post-archive-item" href="#!"
-                                        ><h5>Invest In Social Impact</h5>
-                                        <p>Expose the truth, problem-solvers impact mobilized green spaces.</p></a
-                                    >
-                                    <div class="post-archive-meta">
-                                        <img class="post-archive-meta-img" src="https://source.unsplash.com/vTL_qy03D1I/100x100" />
-                                        <div class="post-archive-meta-details">
-                                            <div class="post-archive-meta-details-name">Aariz Fischer</div>
-                                            <div class="post-archive-meta-details-date">Feb 4 &middot; 5 min read</div>
+                                        <div class="card-footer">
+                                            <div class="post-preview-meta">
+                                                <div class="post-preview-meta-details">
+                                                    <div class="post-preview-meta-details-name">Aariz Fischer</div>
+                                                    <div class="post-preview-meta-details-date">Feb 4</div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <hr class="my-5" />
-                                    <a class="post-archive-item" href="#!"
-                                        ><h5>Save the World, Social Entrepreneur</h5>
-                                        <p>Contextualize co-creation and do good while building your startup.</p></a
-                                    >
-                                    <div class="post-archive-meta">
-                                        <img class="post-archive-meta-img" src="https://source.unsplash.com/e12wQLAjQi0/100x100" />
-                                        <div class="post-archive-meta-details">
-                                            <div class="post-archive-meta-details-name">Henry Iman</div>
-                                            <div class="post-archive-meta-details-date">Feb 3 &middot; 7 min read</div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-4 col-lg-0 col-md-6 mb-5">
+                                    <a class="card post-preview lift h-100" href="#!">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Invest In Social Impact</h5>
+                                            <p class="card-text">Expose the truth, problem-solvers impact mobilized green spaces.</p>
                                         </div>
-                                    </div>
-                                    <hr class="my-5" />
-                                    <a class="post-archive-item" href="#!"
-                                        ><h5>Design Thinking Benefits Corporation Thought Leadership</h5>
-                                        <p>Global changemakers, a state of play releives stress and creates inspirational work environments.</p></a
-                                    >
-                                    <div class="post-archive-meta">
-                                        <img class="post-archive-meta-img" src="https://source.unsplash.com/zEMl5XuLfew/100x100" />
-                                        <div class="post-archive-meta-details">
-                                            <div class="post-archive-meta-details-name">Mahesh Kumar</div>
-                                            <div class="post-archive-meta-details-date">Feb 1 &middot; 4 min read</div>
+                                        <div class="card-footer">
+                                            <div class="post-preview-meta">
+                                                <div class="post-preview-meta-details">
+                                                    <div class="post-preview-meta-details-name">Aariz Fischer</div>
+                                                    <div class="post-preview-meta-details-date">Feb 4</div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <hr class="my-5" />
-                                    <a class="post-archive-item" href="#!"
-                                        ><h5>Collaborative Consumption, Human-Centered Technology Thought Leader Systems</h5>
-                                        <p>Milestones theory of change, an effective paradigm, exposes the truth and best practices to uplift equal opportunity.</p></a
-                                    >
-                                    <div class="post-archive-meta">
-                                        <img class="post-archive-meta-img" src="https://source.unsplash.com/-FOUPtqP-mY/100x100" />
-                                        <div class="post-archive-meta-details">
-                                            <div class="post-archive-meta-details-name">Amy Love</div>
-                                            <div class="post-archive-meta-details-date">Jan 30 &middot; 12 min read</div>
+                                    </a>
+                                </div>
+                                <div class="col-xl-4 col-lg-0 col-md-6 mb-5">
+                                    <a class="card post-preview lift h-100" href="#!">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Invest In Social Impact</h5>
+                                            <p class="card-text">Expose the truth, problem-solvers impact mobilized green spaces.</p>
                                         </div>
-                                    </div>
-                                    <hr class="my-5" />
-                                    <a class="post-archive-item" href="#!"
-                                        ><h5>Co-create, Empower - Moving the Needle on Investor Interests</h5>
-                                        <p>Scalable efficient systems and thinking as a social entrepreneur creates a transparent, targeted vison.</p></a
-                                    >
-                                    <div class="post-archive-meta">
-                                        <img class="post-archive-meta-img" src="https://source.unsplash.com/QAB-WJcbgJk/100x100" />
-                                        <div class="post-archive-meta-details">
-                                            <div class="post-archive-meta-details-name">Valerie Luna</div>
-                                            <div class="post-archive-meta-details-date">Jan 29 &middot; 4 min read</div>
+                                        <div class="card-footer">
+                                            <div class="post-preview-meta">
+                                                <div class="post-preview-meta-details">
+                                                    <div class="post-preview-meta-details-name">Aariz Fischer</div>
+                                                    <div class="post-preview-meta-details-date">Feb 4</div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <hr class="my-5" />
-                                    <a class="post-archive-item" href="#!"
-                                        ><h5>Inclusive Shared Units of Analysis</h5>
-                                        <p>Commit to inspiring social capital, social capital inspires the body and the mind.</p></a
-                                    >
-                                    <div class="post-archive-meta">
-                                        <img class="post-archive-meta-img" src="https://source.unsplash.com/qsjM7zomoEI/100x100" />
-                                        <div class="post-archive-meta-details">
-                                            <div class="post-archive-meta-details-name">David Walker</div>
-                                            <div class="post-archive-meta-details-date">Jan 25 &middot; 7 min read</div>
-                                        </div>
-                                    </div>
-                                    <hr class="my-5" />
+                                    </a>
                                 </div>
                             </div>
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination pagination-blog justify-content-center">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#!" aria-label="Previous"><span aria-hidden="true">«</span></a>
-                                    </li>
-                                    <li class="page-item active"><a class="page-link" href="#!">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                                    <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-                                    <li class="page-item"><a class="page-link" href="#!">12</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#!" aria-label="Next"><span aria-hidden="true">»</span></a>
-                                    </li>
-                                </ul>
-                            </nav>
                         </div>
+
+                        <!-- Pagenation start -->
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination pagination-blog justify-content-center">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#!" aria-label="Previous"><span aria-hidden="true">«</span></a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#!">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#!">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#!">3</a></li>
+                                <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
+                                <li class="page-item"><a class="page-link" href="#!">12</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#!" aria-label="Next"><span aria-hidden="true">»</span></a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- Pagenation start -->
+
                         <div class="svg-border-rounded text-dark">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
                         </div>
                     </section>
                 </main>
             </div>
+
+            <!-- Footer Start -->
             <div id="layoutDefault_footer">
                 <footer class="footer pt-10 pb-5 mt-auto bg-dark footer-dark">
                     <div class="container">
                         <div class="row">
-                            <div class="col-lg-3">
-                                <div class="footer-brand">SB UI Kit Pro</div>
-                                <div class="mb-3">Build better websites</div>
-                                <div class="icon-list-social mb-5">
-                                    <a class="icon-list-social-link" href="javascript:void(0);"><i class="fab fa-instagram"></i></a><a class="icon-list-social-link" href="javascript:void(0);"><i class="fab fa-facebook"></i></a><a class="icon-list-social-link" href="javascript:void(0);"><i class="fab fa-github"></i></a><a class="icon-list-social-link" href="javascript:void(0);"><i class="fab fa-twitter"></i></a>
-                                </div>
-                            </div>
                             <div class="col-lg-9">
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                                        <div class="text-uppercase-expanded text-xs mb-4">Product</div>
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><a href="javascript:void(0);">Landing</a></li>
-                                            <li class="mb-2"><a href="javascript:void(0);">Pages</a></li>
-                                            <li class="mb-2"><a href="javascript:void(0);">Sections</a></li>
-                                            <li class="mb-2"><a href="javascript:void(0);">Documentation</a></li>
-                                            <li><a href="javascript:void(0);">Changelog</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                                        <div class="text-uppercase-expanded text-xs mb-4">Technical</div>
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><a href="javascript:void(0);">Documentation</a></li>
-                                            <li class="mb-2"><a href="javascript:void(0);">Changelog</a></li>
-                                            <li class="mb-2"><a href="javascript:void(0);">Theme Customizer</a></li>
-                                            <li><a href="javascript:void(0);">UI Kit</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
-                                        <div class="text-uppercase-expanded text-xs mb-4">Includes</div>
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><a href="javascript:void(0);">Utilities</a></li>
-                                            <li class="mb-2"><a href="javascript:void(0);">Components</a></li>
-                                            <li class="mb-2"><a href="javascript:void(0);">Layouts</a></li>
-                                            <li class="mb-2"><a href="javascript:void(0);">Code Samples</a></li>
-                                            <li class="mb-2"><a href="javascript:void(0);">Products</a></li>
-                                            <li class="mb-2"><a href="javascript:void(0);">Affiliates</a></li>
-                                            <li><a href="javascript:void(0);">Updates</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-3 col-md-6">
-                                        <div class="text-uppercase-expanded text-xs mb-4">Legal</div>
-                                        <ul class="list-unstyled mb-0">
-                                            <li class="mb-2"><a href="javascript:void(0);">Privacy Policy</a></li>
-                                            <li class="mb-2"><a href="javascript:void(0);">Terms and Conditions</a></li>
-                                            <li><a href="javascript:void(0);">License</a></li>
-                                        </ul>
-                                    </div>
+                                <div class="footer-brand">CONTACT</div>
+                                <hr class="mt-0 mb-3" />
+                                    <p class="lead mb-0 mb-1">동대문구에서 활동하고 있으며, 지역에 상관없이 가입 및 매치 문의 환영합니다 ^^</p>
+                                    <p class="lead mb-0 mb-1">010-9959-8910</p>
+                                    <a href="mailto:seungjin429@gmail.com" title="(FC_Passion)홈페이지 보고 연락 드렸습니다.">seungjin429@gmail.com</a>
+                                <div class="icon-list-social mt-3 mb-5">
+                                    <a class="icon-list-social-link" href="https://www.instagram.com/fc_passion_jangan/?hl=ko">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <hr class="my-5" />
                         <div class="row align-items-center">
                             <div class="col-md-6 small">Copyright &copy; Your Website 2020</div>
                             <div class="col-md-6 text-md-right small">
@@ -242,6 +179,7 @@
                     </div>
                 </footer>
             </div>
+            <!-- Footer End -->
         </div>
     </body>
 </html>
