@@ -1,6 +1,8 @@
 from flask import Flask, render_template, jsonify, request, session, url_for, redirect
+from flask_paginate import Pagination, get_page_parameter
 from pymongo import MongoClient
 import datetime
+import math
 
 app = Flask(__name__)
 app.secret_key = b'1234wqerasdfzxcv' 
@@ -11,6 +13,12 @@ db = client.fcpassion
 @app.route('/')
 def home():
     return render_template('home/index.html')
+        
+@app.route('/main', methods=['GET'])
+def main():
+    return jsonify({
+        'result': 'success'
+    })
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -49,28 +57,57 @@ def login():
                 "msg": "DB 에러"
             })
         
-            
+
+@app.route('/notice', methods=['GET'])
+def notice():
+    return render_template('notice/notice_list.html')
+
 @app.route('/notice/list', methods=['GET', 'POST'])
 def notice_list():
     if request.method == 'GET':
 
         noticeCollection = db.notice
-        offset = 0
-        limit = 9
+        offset = int(request.args.get('offset'))
+        limit = int(request.args.get('limit'))
 
         first_id = list(noticeCollection.find({}).sort('_id', 1))
         last_id = first_id[offset]['_id']
 
         notice_list = list(noticeCollection.find({'_id' : {'$gte' : last_id}}, {'_id': False}).sort('_id', -1).limit(limit))
+
+        next_url = 'notice/list?limit=' + str(limit) + '&offset=' + str(offset + limit)
+        prev_url = 'notice/list?limit=' + str(limit) + '&offset=' + str(offset - limit)
+        # total = math.ceil(noticeCollection.find().count() / limit)
         
+        # search = True
+        # notice_list = noticeCollection.find({}, {'_id': False})
+        # page = request.args.get(get_page_parameter(), type=int, default=1)
+        # pagination = Pagination(
+        #     page=page,
+        #     total=notice_list.count(),
+        #     search=search,
+        #     record_name='notice_list',
+        #     per_page = 3
+        # )
 
-        # for notice in notice_list:
+        # return render_template(
+        #     'notice/notice_list.html',
+        #     notice_list=notice_list,
+        #     pagination=pagination
+        # )
 
+        print(notice_list)
 
+        # return render_template(
+        #     'notice/notice_list.html',
+        #     notice_list=notice_list,
+        #     prev_url=prev_url,
+        #     next_url=next_url,
+        #     # total=total,
+        #     # offset=str(offset)
+        # )
 
-        print(last_id)
-        # return render_template('notice/notice_list.html', notice_list = notice_list)
-        return jsonify({'result': notice_list})
+        return jsonify({'data': notice_list, 'prev_url': prev_url, 'next_url': next_url})
             
 @app.route('/notice/write', methods=['GET', 'POST'])
 def notice_write():
@@ -102,14 +139,7 @@ def notice_write():
                 "result": "failure",
                 "msg": "DB 에러"
             })
-    
-        
-@app.route('/main', methods=['GET'])
-def main():
-    return jsonify({
-        'result': 'success'
-    })
 
 
 if __name__ == '__main__':
-   app.run('0.0.0.0',port=5047,debug=True)
+   app.run('0.0.0.0',port=5061,debug=True)
