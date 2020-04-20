@@ -1,12 +1,12 @@
 // Logic
-function login_post() {
+function loginPost() {
     
     let $id = $('#inputID').val();
     let $pw = $('#inputPW').val();
 
     $.ajax({
         type: "POST",
-        url: "/login",
+        url: "/api/login",
         data: {
             'input_id' : $id,
             'input_pw' : $pw

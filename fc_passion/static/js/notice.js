@@ -1,6 +1,5 @@
 // View Load
 $(document).ready(function() {
-    // noticeAllItems(0)
 })
 
 // Logic
@@ -11,16 +10,14 @@ function noticePost() {
 
     $.ajax({
         type: "POST",
-        url: "/notice/write",
+        url: "/api/notice/write",
         data: {
             'input_title' : $title,
             'input_content' : $content
         },
         success: function(response) {
             if (response['result'] == 'success') {
-                window.location.href = '/notice'
-            } else {
-
+                window.location.href = '/notice/list'
             }
         },
         error: function(request, status, error) {
@@ -29,27 +26,19 @@ function noticePost() {
     });
 }
 
-function noticeAllItems(offset) {
+function searchQuery() {
 
-    console.log(offset)
+    let $option = $('#selected-title').val()
+    let $query = $('#input-query').val()
+
     $.ajax({
         type: "GET",
-        url: "/notice/list?limit=3&offset="+offset,
+        url: "/api/notice/search?option="+$option+"&query="+$query,
         data: {},
         success: function(response) {
-            let items = response['data']
-            items.forEach(item => {
-                makeNoticeBox(item.title, item.content, item.name, item.date)
-            })
-
-            // let prevOffset = response['prev_offset']
-            // // $('#prev_page').attr('onclick', noticeAllItems(prevOffset))
-            // $('#prev_page').attr('href', prevOffset)
-            
-            // let nextOffset = response['next_offset']
-            // // $('#next_page').attr('onclick', noticeAllItems(nextOffset))
-            // $('#next_page').attr('href', nextOffset)
-
+            if (response['result'] == 'success') {
+                window.location.href = '/notice/search?option='+$option+'&query='+$query
+            }
         },
         error: function(request, status, error) {
             console.log(error)
@@ -57,24 +46,26 @@ function noticeAllItems(offset) {
     });
 }
 
-
-function makeNoticeBox(title, content, name, date) {
-    let notice_html = '<div class="col-xl-4 col-lg-0 col-md-6 mb-5">\
-                        <a class="card post-preview lift h-100" href="#!">\
-                            <div class="card-body body-ellipsis mb-2">\
-                                <h5 class="card-title">' + title + '</h5>\
-                                <p class="card-text">' + content + '</p>\
-                            </div>\
-                            <div class="card-footer">\
-                                <div class="post-preview-meta">\
-                                    <div class="post-preview-meta-details">\
-                                        <div class="post-preview-meta-details-name">' + name + '</div>\
-                                        <div class="post-preview-meta-details-date">' + date + '</div>\
-                                    </div>\
-                                </div>\
-                            </div>\
-                        </a>\
-                    </div>';
-
-    $('#notice-box').append(notice_html)
+function selectDropDown() {
+    let $selectedTitle = $('#selected-title')
+    let $selectedContent = $('#selected-content')
+    
+    if ($selectedTitle.text() == '제목') {
+        if ($selectedContent.text() == '본문') {
+            $selectedContent.click(function() {
+                $selectedTitle.val('content')
+                $selectedTitle.text('본문')
+                $selectedContent.text('제목');
+            })
+        }
+        
+    } else {
+        if ($selectedContent.text() == '제목') {
+            $selectedContent.click(function() {
+                $selectedTitle.val('title')
+                $selectedTitle.text('제목');
+                $selectedContent.text('본문');
+            });
+        }
+    }
 }

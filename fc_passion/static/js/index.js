@@ -7,7 +7,7 @@ $(document).ready(function() {
 function getAllItems() {
     $.ajax({
         type: "GET",
-        url: "/main",
+        url: "/api/index",
         data: {},
         success: function(response) {
             if (response['result'] == 'success') {

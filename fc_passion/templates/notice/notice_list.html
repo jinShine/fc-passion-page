@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Blog Archive - SB Admin Pro</title>
+        <title>공지사항</title>
         <link href="{{ url_for('static', filename='css/ui_styles.css') }}" rel="stylesheet" />
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
 
@@ -42,15 +42,17 @@
                     
                     <section class="bg-light py-10">
                         <div class="container">
+                            
                             <!-- Search bar start -->
                             <div class="input-group input-group-lg mb-10">
                                 <div class="input-group-prepend">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 제목 </button>
+                                    <button id="selected-title" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="title" onclick="selectDropDown()">제목</button>
                                     <div class="dropdown-menu animated--fade-in-up">
-                                        <a class="dropdown-item" href="#!">본문</a>
+                                        <a id="selected-content" class="dropdown-item" onclick="selectDropDown()">본문</a>
                                     </div>
                                 </div>
-                                <input class="form-control" type="text" aria-label="Text input with dropdown button" placeholder="검색어를 입력하세요." />
+                                <input id="input-query" class="form-control" type="text" aria-label="Text input with dropdown button" placeholder="검색어를 입력하세요." />
+                                <a class="btn btn-primary d-inline-flex align-items-center" href="#" onclick="searchQuery()">검색</a>
                             </div>
                             <!-- Search bar end -->
 
@@ -58,7 +60,7 @@
                             <div class="d-flex align-items-center justify-content-between mb-3">
                                 <h2 class="mb-1">공지사항</h2>
                                 <div>
-                                    <a class="btn btn-primary d-inline-flex align-items-center" href="/notice/write">글쓰기<i class="ml-1" data-feather="arrow-right"></i></a>
+                                    <a class="btn btn-primary d-inline-flex align-items-center" href="/api/notice/write">글쓰기<i class="ml-1" data-feather="arrow-right"></i></a>
                                 </div>
                             </div>
                             <!-- Header end -->
@@ -88,6 +90,7 @@
                         </div>
 
                         <!-- Pagenation start -->
+                        {% if type != 'search' %}
                         <nav aria-label="Page navigation example">
                             <ul class="pagination pagination-blog justify-content-center" id="notice-pagination">
                                 {% if current_page == 1 %}
@@ -98,13 +101,8 @@
                                     <a class="page-link" id="prev_page" href="{{ prev_url }}" aria-label="Previous"><span aria-hidden="true">«</span></a>
                                 </li>
                                 <li class="page-item">
-                                    <a class="page-link" href="#!">{{ current_page }} / {{ total }}</a>
+                                    <a class="page-link" href="">{{ current_page }} / {{ total }}</a>
                                 </li>
-                                <!-- <li class="page-item active"><a class="page-link" href="#!">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#!">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#!">3</a></li>
-                                <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-                                <li class="page-item"><a class="page-link" href="#!">12</a></li> -->
                                 {% if current_page == total %}
                                 <li class="page-item disabled">
                                 {% else %}
@@ -114,7 +112,8 @@
                                 </li>
                             </ul>
                         </nav>
-                        <!-- Pagenation start -->
+                        {% endif %}
+                        <!-- Pagenation end -->
 
                         <div class="svg-border-rounded text-dark">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
