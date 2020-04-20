@@ -89,19 +89,28 @@
 
                         <!-- Pagenation start -->
                         <nav aria-label="Page navigation example">
-                            {{ notice_list }}
                             <ul class="pagination pagination-blog justify-content-center" id="notice-pagination">
+                                {% if current_page == 1 %}
                                 <li class="page-item disabled">
-                                    <a class="page-link" href="#!" aria-label="Previous"><span aria-hidden="true">«</span></a>
+                                {% else %}
+                                <li class="page-item"></li>
+                                {% endif %}
+                                    <a class="page-link" id="prev_page" href="{{ prev_url }}" aria-label="Previous"><span aria-hidden="true">«</span></a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="#!">{{ offset }} / {{ total }}</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#!">{{ current_page }} / {{ total }}</a>
+                                </li>
                                 <!-- <li class="page-item active"><a class="page-link" href="#!">1</a></li>
                                 <li class="page-item"><a class="page-link" href="#!">2</a></li>
                                 <li class="page-item"><a class="page-link" href="#!">3</a></li>
                                 <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
                                 <li class="page-item"><a class="page-link" href="#!">12</a></li> -->
-                                <li class="page-item">
-                                    <a class="page-link" href="#!" aria-label="Next"><span aria-hidden="true">»</span></a>
+                                {% if current_page == total %}
+                                <li class="page-item disabled">
+                                {% else %}
+                                <li class="page-item"></li>
+                                {% endif %}
+                                    <a class="page-link" id="next_page" href="{{ next_url }}" aria-label="Next"><span aria-hidden="true">»</span></a>
                                 </li>
                             </ul>
                         </nav>

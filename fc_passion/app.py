@@ -67,17 +67,40 @@ def notice_list():
     if request.method == 'GET':
 
         noticeCollection = db.notice
-        offset = int(request.args.get('offset'))
-        limit = int(request.args.get('limit'))
 
-        first_id = list(noticeCollection.find({}).sort('_id', 1))
-        last_id = first_id[offset]['_id']
+        offset = 0
+        limit = 3
 
-        notice_list = list(noticeCollection.find({'_id' : {'$gte' : last_id}}, {'_id': False}).sort('_id', -1).limit(limit))
+        if not request.args.get('offset') == None:
+            offset = int(request.args.get('offset'))
+        
+        if not request.args.get('limit') == None:
+            limit = int(request.args.get('limit'))
 
-        next_url = 'notice/list?limit=' + str(limit) + '&offset=' + str(offset + limit)
-        prev_url = 'notice/list?limit=' + str(limit) + '&offset=' + str(offset - limit)
-        # total = math.ceil(noticeCollection.find().count() / limit)
+        # first_id = list(noticeCollection.find({}).sort('_id', 1))
+        # last_id = first_id[offset]['_id']
+        # print(str(last_id))
+        # notice_list = list(noticeCollection.find({'_id' : {'$gte' : last_id}}, {'_id': False}).sort('_id', -1).limit(limit))
+
+        # next_url = 'notice/list?limit=' + str(limit) + '&offset=' + str(offset + limit)
+        # prev_url = 'notice/list?limit=' + str(limit) + '&offset=' + str(offset - limit)
+
+        first_id = list(noticeCollection.find({}).sort('date', -1))
+        last_id = first_id[offset]['date']
+
+        notice_list = list(noticeCollection.find({'date' : {'$lte' : last_id}}, {'_id': False}).sort('date', -1).limit(limit))
+
+        next_url = '/notice/list?limit=' + str(limit) + '&offset=' + str(offset + limit)
+        prev_url = '/notice/list?limit=' + str(limit) + '&offset=' + str(offset - limit)
+
+        total = math.ceil(noticeCollection.find().count() / limit)
+
+        print("limit", limit)
+        print("offset", offset)
+        current_page = math.ceil((offset / limit) + 1)
+        # next_offset = str(offset + limit)
+        # prev_offset = str(offset - limit)
+        
         
         # search = True
         # notice_list = noticeCollection.find({}, {'_id': False})
@@ -96,18 +119,17 @@ def notice_list():
         #     pagination=pagination
         # )
 
-        print(notice_list)
+        return render_template(
+            'notice/notice_list.html',
+            notice_list=notice_list,
+            prev_url=prev_url,
+            next_url=next_url,
+            total=total,
+            current_page=current_page
+            # offset=str(offset)
+        )
 
-        # return render_template(
-        #     'notice/notice_list.html',
-        #     notice_list=notice_list,
-        #     prev_url=prev_url,
-        #     next_url=next_url,
-        #     # total=total,
-        #     # offset=str(offset)
-        # )
-
-        return jsonify({'data': notice_list, 'prev_url': prev_url, 'next_url': next_url})
+        # return jsonify({'data': notice_list, 'prev_offset': prev_url, 'next_offset': next_url})
             
 @app.route('/notice/write', methods=['GET', 'POST'])
 def notice_write():
@@ -142,4 +164,4 @@ def notice_write():
 
 
 if __name__ == '__main__':
-   app.run('0.0.0.0',port=5061,debug=True)
+   app.run('0.0.0.0',port=5079,debug=True)

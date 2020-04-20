@@ -1,6 +1,6 @@
 // View Load
 $(document).ready(function() {
-    noticeAllItems()
+    // noticeAllItems(0)
 })
 
 // Logic
@@ -29,16 +29,27 @@ function noticePost() {
     });
 }
 
-function noticeAllItems() {
+function noticeAllItems(offset) {
+
+    console.log(offset)
     $.ajax({
         type: "GET",
-        url: "/notice/list",
+        url: "/notice/list?limit=3&offset="+offset,
         data: {},
         success: function(response) {
             let items = response['data']
             items.forEach(item => {
                 makeNoticeBox(item.title, item.content, item.name, item.date)
             })
+
+            // let prevOffset = response['prev_offset']
+            // // $('#prev_page').attr('onclick', noticeAllItems(prevOffset))
+            // $('#prev_page').attr('href', prevOffset)
+            
+            // let nextOffset = response['next_offset']
+            // // $('#next_page').attr('onclick', noticeAllItems(nextOffset))
+            // $('#next_page').attr('href', nextOffset)
+
         },
         error: function(request, status, error) {
             console.log(error)

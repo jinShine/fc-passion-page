@@ -11,11 +11,11 @@ function getAllItems() {
         data: {},
         success: function(response) {
             if (response['result'] == 'success') {
-                console.log('성공해라!!!!!!!')
+                console.log('success')
             }
         },
         error: function(request, status, error) {
-            console.log("에러인가??")
+            console.log(error)
         }
     });
 }
