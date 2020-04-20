@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request, session, url_for, redirect
 from flask_paginate import Pagination, get_page_parameter
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 import datetime
 import math
 import config
@@ -8,13 +9,12 @@ import config
 app = Flask(__name__)
 app.secret_key = b'1234wqerasdfzxcv' 
 
-mongoConfig = config.APP_CONFIG['MongoDB_ID'] + ":" + config.APP_CONFIG['MongoDB_PW'] + "@" + config.APP_CONFIG['AWS_PUBLIC']
-print(mongoConfig)
-client = MongoClient('mongodb://'+mongoConfig, 27017)
+client = MongoClient(config.MongoDB_URL, 27017)
 db = client.fcpassion
 
 @app.route('/')
 def home():
+    db.notice.get
     return render_template('home/index.html')
         
 @app.route('/api/index', methods=['GET'])
@@ -110,7 +110,7 @@ def notice_list_view():
         first_id = list(notice_collection.find({}).sort('date', -1))
         last_id = first_id[offset]['date']
 
-        notice_list = list(notice_collection.find({'date' : {'$lte' : last_id}}, {'_id': False}).sort('date', -1).limit(limit))
+        notice_list = list(notice_collection.find({'date' : {'$lte' : last_id}}).sort('date', -1).limit(limit))
 
         next_url = '/notice/list?limit=' + str(limit) + '&offset=' + str(offset + limit)
         prev_url = '/notice/list?limit=' + str(limit) + '&offset=' + str(offset - limit)
@@ -158,6 +158,22 @@ def notice_write():
                 "msg": "DB 에러"
             })
 
+@app.route('/notice/detail/<notice_id>', methods=['GET'])
+def notice_detail(notice_id):
+    if request.method == 'GET':
+        
+        notice_collection = db.notice
+        notice = notice_collection.find_one({'_id': ObjectId(notice_id)})
+        
+        return render_template(
+            '/notice/notice_detail.html',
+            notice=notice
+        )
+        # return jsonify({
+        #     'result': 'success',
+        #     'data': notice
+        # })
+
 
 if __name__ == '__main__':
-   app.run('0.0.0.0',port=5039,debug=True)
+   app.run('0.0.0.0',port=5040,debug=True)
