@@ -1,10 +1,11 @@
+import datetime
+import math
+import config
 from flask import Flask, render_template, jsonify, request, session, url_for, redirect
 from flask_paginate import Pagination, get_page_parameter
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-import datetime
-import math
-import config
+from instagram_api import insta_fetch_feed
 
 app = Flask(__name__)
 app.secret_key = b'1234wqerasdfzxcv' 
@@ -14,7 +15,8 @@ db = client.fcpassion
 
 @app.route('/')
 def home():
-    db.notice.get
+    print("오오오오오오오오오", insta_fetch_feed())
+    
     return render_template('home/index.html')
         
 @app.route('/api/index', methods=['GET'])
@@ -170,6 +172,5 @@ def notice_detail(notice_id):
             notice=notice
         )
 
-
 if __name__ == '__main__':
-   app.run('0.0.0.0',port=5040,debug=True)
+    app.run('0.0.0.0',port=5040,debug=True)
