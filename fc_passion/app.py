@@ -72,9 +72,9 @@ def notice_search_view():
         result = []
 
         if option == 'title':
-            result = list(notice_collection.find({'title': {'$regex':query}}, {'_id': False}))
+            result = list(notice_collection.find({'title': {'$regex':query}}, {'_id': False}).sort('date', -1))
         else:
-            result = list(notice_collection.find({'content': {'$regex':query}}, {'_id': False}))
+            result = list(notice_collection.find({'content': {'$regex':query}}, {'_id': False}).sort('date', -1))
 
         return render_template(
             'notice/notice_list.html',
@@ -164,15 +164,11 @@ def notice_detail(notice_id):
         
         notice_collection = db.notice
         notice = notice_collection.find_one({'_id': ObjectId(notice_id)})
-        
+
         return render_template(
             '/notice/notice_detail.html',
             notice=notice
         )
-        # return jsonify({
-        #     'result': 'success',
-        #     'data': notice
-        # })
 
 
 if __name__ == '__main__':
