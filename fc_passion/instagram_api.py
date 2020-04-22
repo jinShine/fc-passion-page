@@ -13,6 +13,7 @@ def insta_fetch_feed():
     data = []
     insta_url_list = []
     image_url_list = []
+    post_type_list = []
     post_id = 1
 
     APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -37,15 +38,24 @@ def insta_fetch_feed():
             if not a_tag == []:
                 insta_url_list.append('https://www.instagram.com' + a_tag[0].get('href'))
 
+            type = post.select('a > div > span')
+            if not type == []:
+                post_type = type[0].get('aria-label')
+                if post_type == '동영상':
+                    post_type_list.append('동영상')
+                else:
+                    post_type_list.append('이미지')
+
             img_tag = post.select('div > div > img')
             if not img_tag == []:
                 image_url_list.append(img_tag[0].get('src'))
 
-    for insta_url, image_url in zip(list(set(insta_url_list)), list(set(image_url_list))):
+    for insta_url, image_url, post_type in zip(list(set(insta_url_list)), list(set(image_url_list)), post_type_list):
         post_info = {
             'id': post_id,
             'image_url': image_url,
-            'insta_url': insta_url
+            'insta_url': insta_url,
+            'post_type': post_type
         }
         post_id += 1
         data.append(post_info)

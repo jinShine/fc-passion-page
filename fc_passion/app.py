@@ -13,8 +13,17 @@ mongo = DB()
 
 @app.route('/')
 def home():
-    print(list(mongo.get_insta_api()))
-    return render_template('home/index.html')
+    # print(list(mongo.get_insta_api()))
+    # list = mongo.get_insta_api()
+
+    notice_list = mongo.fcpassion_db().notice.find({}, {'_id': False}).sort("date", -1).limit(3)
+    insta_list = mongo.fcpassion_db().instagram.find({}, {'_id': False}).sort("id", -1).limit(12)
+
+    return render_template(
+        'home/index.html',
+        notice_list=notice_list,
+        insta_list=insta_list
+    )
         
 @app.route('/api/index', methods=['GET'])
 def index():
@@ -169,6 +178,16 @@ def notice_detail(notice_id):
             '/notice/notice_detail.html',
             notice=notice
         )
+
+
+@app.route('/daily-life/list', methods=['GET'])
+def daily_life_list_view():
+    insta_list = mongo.get_insta_api()
+
+    return render_template(
+        'daily_life/daily_life_list.html',
+        insta_list=insta_list
+    )
 
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5040,debug=True)

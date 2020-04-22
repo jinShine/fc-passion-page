@@ -1,2 +1,2 @@
- # print()
-    # print()
+
+        return render_template('login/login.html')
