@@ -2,21 +2,18 @@ import datetime
 import math
 import config
 from flask import Flask, render_template, jsonify, request, session, url_for, redirect
-from flask_paginate import Pagination, get_page_parameter
-from pymongo import MongoClient
+from db import DB
 from bson.objectid import ObjectId
 from instagram_api import insta_fetch_feed
 
 app = Flask(__name__)
 app.secret_key = b'1234wqerasdfzxcv' 
 
-client = MongoClient(config.MongoDB_URL, 27017)
-db = client.fcpassion
+mongo = DB()
 
 @app.route('/')
 def home():
-    print("오오오오오오오오오", insta_fetch_feed())
-    
+    print(list(mongo.get_insta_api()))
     return render_template('home/index.html')
         
 @app.route('/api/index', methods=['GET'])
@@ -35,7 +32,7 @@ def login():
         input_pw = request.form.get('input_pw')
 
         try:
-            found_admin = db.admin.find_one({
+            found_admin = mongo.fcpassion_db().admin.find_one({
                 'id': input_id,
                 'pw': input_pw
             })
@@ -69,7 +66,7 @@ def notice_search_view():
         option = request.args.get('option')
         query = request.args.get('query')
 
-        notice_collection = db.notice
+        notice_collection = mongo.fcpassion_db().notice
 
         result = []
 
@@ -95,10 +92,10 @@ def notice_search():
 def notice_list_view():
     if request.method == 'GET':
 
-        if list(db.notice.find()) == []:
-            return render_template('notice/notice_list.html')
+        notice_collection = mongo.fcpassion_db().notice
 
-        notice_collection = db.notice
+        if list(notice_collection.find()) == []:
+            return render_template('notice/notice_list.html')
         
         offset = 0
         limit = 9
@@ -132,7 +129,8 @@ def notice_list_view():
 @app.route('/api/notice/write', methods=['GET', 'POST'])
 def notice_write():
     if request.method == 'GET':
-        if session['logged_in'] == False:
+        print("!!!", session.get('logged_in'))
+        if session.get('logged_in') == None or session['logged_in'] == False:
             return redirect(url_for('login'))
 
         return render_template('notice/notice_write.html')
@@ -143,7 +141,7 @@ def notice_write():
         now = str(datetime.datetime.now()).split('.')[0]
     
         try:
-            db.notice.insert_one({
+            mongo.fcpassion_db().notice.insert_one({
                 'name': name,
                 'title': title,
                 'content': content,
@@ -164,7 +162,7 @@ def notice_write():
 def notice_detail(notice_id):
     if request.method == 'GET':
         
-        notice_collection = db.notice
+        notice_collection = mongo.fcpassion_db().notice
         notice = notice_collection.find_one({'_id': ObjectId(notice_id)})
 
         return render_template(
