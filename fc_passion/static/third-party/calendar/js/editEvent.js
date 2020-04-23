@@ -24,7 +24,7 @@ var editEvent = function (event, element, view) {
         editEnd.val(event.end.format('YYYY-MM-DD HH:mm'));
     }
 
-    modalTitle.html('일정 수정');
+    // modalTitle.html('일정 수정');
     editTitle.val(event.title);
     editStart.val(event.start.format('YYYY-MM-DD HH:mm'));
     editType.val(event.type);
@@ -93,23 +93,29 @@ var editEvent = function (event, element, view) {
     });
 };
 
-// 삭제버튼
-$('#deleteEvent').on('click', function () {
-    
-    $('#deleteEvent').unbind();
-    $("#calendar").fullCalendar('removeEvents', $(this).data('id'));
-    eventModal.modal('hide');
+var deleteEvent = function (event, element, view) {
+    console.log('Event!!!', event)
 
-    //삭제시
-    $.ajax({
-        type: "get",
-        url: "",
-        data: {
-            //...
-        },
-        success: function (response) {
-            alert('삭제되었습니다.');
-        }
+    // 삭제버튼
+    $('#deleteEvent').on('click', function () {
+        
+        $('#deleteEvent').unbind();
+        $("#calendar").fullCalendar('removeEvents', $(this).data('id'));
+        eventModal.modal('hide');
+        
+        console.log("id!!!", event.id)
+
+        //삭제시
+        $.ajax({
+            type: "POST",
+            url: "/schedule/delete",
+            data: {
+                'id': event.id
+            },
+            success: function (response) {
+                console.log(response['result'])
+            }
+        });
+
     });
-
-});
+}

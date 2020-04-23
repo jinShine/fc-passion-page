@@ -83,8 +83,10 @@ def schedule_list():
 
         try:
             match_schedule_list = mongo.fcpassion_db().match_schedule.find({}, {'_id': False})
+            # match_schedule_list
             data = list(match_schedule_list)
 
+            # return data
             return jsonify({
                 'result': 'success',
                 'data' : data
@@ -112,8 +114,12 @@ def schedule_write_view():
         start = input_date + 'T' + start_time
         end = input_date + 'T' + end_time
 
+        list_count = len(list(mongo.fcpassion_db().match_schedule.find({}, {'_id': False})))
+        schdule_id = str(list_count + 1)
+        
         try:
             mongo.fcpassion_db().match_schedule.insert_one({
+                "id": schdule_id,
                 "title": input_title,
                 "description": input_description,
                 "start": start,
@@ -132,7 +138,24 @@ def schedule_write_view():
             return jsonify({
                 'result': 'failure'
             })
-        
+
+@app.route('/schedule/delete', methods=['POST'])
+def schedule_delite():
+    if request.method == 'POST':
+
+        schedule_id = request.form.get('id')
+        print("!~~!~!", schedule_id)
+
+        try:
+            mongo.fcpassion_db().match_schedule.delete_one({'id':schedule_id})
+
+            return jsonify({
+                'result': 'success'
+            })
+        except:
+            return jsonify({
+                'result': 'failure'
+            })        
     
 
 #########################################################
@@ -260,4 +283,4 @@ def daily_life_list_view():
     )
 
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=5078,debug=True)
+    app.run('0.0.0.0',port=5103,debug=True)

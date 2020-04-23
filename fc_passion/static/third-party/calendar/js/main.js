@@ -1,5 +1,6 @@
 var draggedEventIsAllDay;
 var activeInactiveWeekends = true;
+var eventResultDatas;
 
 function getDisplayEventDate(event) {
 
@@ -90,7 +91,6 @@ function calDateWhenDragnDrop(event) {
   return newDates;
 }
 
-
 var calendar = $('#calendar').fullCalendar({
 
   eventRender: function (event, element, view) {
@@ -107,7 +107,6 @@ var calendar = $('#calendar').fullCalendar({
       content: $('<div />', {
           class: 'popoverInfoCalendar'
         }).append('<p><strong>등록자:</strong> ' + event.username + '</p>')
-        .append('<p><strong>구분:</strong> ' + event.type + '</p>')
         .append('<p><strong>시간:</strong> ' + getDisplayEventDate(event) + '</p>')
         .append('<div class="popoverDescCalendar"><strong>설명:</strong> ' + event.description + '</div>'),
       delay: {
@@ -172,7 +171,10 @@ var calendar = $('#calendar').fullCalendar({
       },
       success: function (response) {
 
+        console.log("@@", response)
         let data = response['data']
+        console.log(data)
+        eventResultDatas = data
         var fixedDate = data.map(function (array) {
           if (array.allDay && array.start !== array.end) {
             // 이틀 이상 AllDay 일정인 경우 달력에 표기시 하루를 더해야 정상출력
@@ -307,6 +309,7 @@ var calendar = $('#calendar').fullCalendar({
   //이벤트 클릭시 수정이벤트
   eventClick: function (event, jsEvent, view) {
     editEvent(event);
+    deleteEvent(event);
   },
 
   // locale: 'ko',
