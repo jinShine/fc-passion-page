@@ -11,10 +11,10 @@ app.secret_key = b'1234wqerasdfzxcv'
 
 mongo = DB()
 
+#########################################################
+# Home
 @app.route('/')
 def home():
-    # print(list(mongo.get_insta_api()))
-    # list = mongo.get_insta_api()
 
     notice_list = mongo.fcpassion_db().notice.find({}, {'_id': False}).sort("date", -1).limit(3)
     insta_list = mongo.fcpassion_db().instagram.find({}, {'_id': False}).sort("id", -1).limit(12)
@@ -31,6 +31,8 @@ def index():
         'result': 'success'
     })
 
+#########################################################
+# 로그인
 @app.route('/api/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'GET':
@@ -68,6 +70,73 @@ def login():
                 "msg": "DB 에러"
             })
 
+#########################################################
+# 경기 일정
+@app.route('/schedule/list', methods=['GET'])
+def schedule_list_view():
+    if request.method == 'GET':
+        return render_template('match_schedule/match_schedule_list.html')
+        
+@app.route('/api/schedule/list', methods=['GET'])
+def schedule_list():
+    if request.method == 'GET':
+
+        try:
+            match_schedule_list = mongo.fcpassion_db().match_schedule.find({}, {'_id': False})
+            data = list(match_schedule_list)
+
+            return jsonify({
+                'result': 'success',
+                'data' : data
+            })
+        except:
+            return jsonify({
+                'result': 'failure'
+            })
+
+@app.route('/schedule/write', methods=['GET', 'POST'])
+def schedule_write_view():
+    if request.method == 'GET':
+        return render_template('match_schedule/match_schedule_write.html')
+    elif request.method == 'POST':
+
+        input_title = request.form.get('title')
+        input_description = request.form.get('description')
+        input_date = request.form.get('date')
+        input_time = request.form.get('time')
+
+
+        start_time = input_time.split('-')[0]
+        end_time = input_time.split('-')[1]
+
+        start = input_date + 'T' + start_time
+        end = input_date + 'T' + end_time
+
+        try:
+            mongo.fcpassion_db().match_schedule.insert_one({
+                "title": input_title,
+                "description": input_description,
+                "start": start,
+                "end": end,
+                "type": "카테고리1",
+                "username": "관리자",
+                "backgroundColor": "#D25565",
+                "textColor": "#ffffff",
+                "allDay": False
+            })
+
+            return jsonify({
+                'result': 'success'
+            })
+        except:
+            return jsonify({
+                'result': 'failure'
+            })
+        
+    
+
+#########################################################
+# 공지 사항
 @app.route('/notice/search', methods=['GET'])
 def notice_search_view():
     if request.method == 'GET':
@@ -179,7 +248,8 @@ def notice_detail(notice_id):
             notice=notice
         )
 
-
+#########################################################
+# 일상
 @app.route('/daily-life/list', methods=['GET'])
 def daily_life_list_view():
     insta_list = mongo.get_insta_api()
@@ -190,4 +260,4 @@ def daily_life_list_view():
     )
 
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=5040,debug=True)
+    app.run('0.0.0.0',port=5078,debug=True)
