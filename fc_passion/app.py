@@ -83,7 +83,6 @@ def schedule_list():
 
         try:
             match_schedule_list = mongo.fcpassion_db().match_schedule.find({}, {'_id': False})
-            # match_schedule_list
             data = list(match_schedule_list)
 
             # return data
@@ -116,7 +115,7 @@ def schedule_write_view():
 
         list_count = len(list(mongo.fcpassion_db().match_schedule.find({}, {'_id': False})))
         schdule_id = str(list_count + 1)
-        
+
         try:
             mongo.fcpassion_db().match_schedule.insert_one({
                 "id": schdule_id,
@@ -144,18 +143,50 @@ def schedule_delite():
     if request.method == 'POST':
 
         schedule_id = request.form.get('id')
-        print("!~~!~!", schedule_id)
 
         try:
             mongo.fcpassion_db().match_schedule.delete_one({'id':schedule_id})
 
             return jsonify({
-                'result': 'success'
+                'result': 'success',
+                'msg': '삭제되었습니다.'
             })
         except:
             return jsonify({
-                'result': 'failure'
-            })        
+                'result': 'failure',
+                'msg': 'DB 에러, 관리자에게 문의 바랍니다.'
+            })
+
+@app.route('/schedule/update', methods=['POST'])
+def schedule_update():
+    if request.method == 'POST':
+
+        schedule_id = request.form.get('id')
+        schedule_title = request.form.get('title')
+        schedule_start = request.form.get('start')
+        schedule_end = request.form.get('end')
+        schedule_description = request.form.get('description')
+
+        try:
+            mongo.fcpassion_db().match_schedule.update_one(
+                {'id': schedule_id},
+                {'$set': {
+                    'title':schedule_title,
+                'start':schedule_start,
+                'end':schedule_end,
+                'description':schedule_description
+                }  
+            })
+
+            return jsonify({
+                'result': 'success',
+                'msg': '수정되었습니다.'
+            })
+        except:
+            return jsonify({
+                'result': 'failure',
+                'msg': 'DB 에러, 관리자에게 문의 바랍니다.'
+            })   
     
 
 #########################################################
@@ -283,4 +314,4 @@ def daily_life_list_view():
     )
 
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=5103,debug=True)
+    app.run('0.0.0.0',port=5115,debug=True)

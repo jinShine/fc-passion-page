@@ -80,13 +80,21 @@ var editEvent = function (event, element, view) {
 
         //일정 업데이트
         $.ajax({
-            type: "get",
-            url: "",
+            type: "POST",
+            url: "/schedule/update",
             data: {
-                //...
+                'id': event.id,
+                'title': event.title,
+                'start': event.start,
+                'end': event.end,
+                'description': event.description
             },
             success: function (response) {
-                alert('수정되었습니다.')
+                if (response['result'] == 'success') {
+                    alert(response['msg'])
+                } else {
+                    alert(response['msg'])
+                }
             }
         });
 
@@ -94,7 +102,6 @@ var editEvent = function (event, element, view) {
 };
 
 var deleteEvent = function (event, element, view) {
-    console.log('Event!!!', event)
 
     // 삭제버튼
     $('#deleteEvent').on('click', function () {
@@ -102,8 +109,6 @@ var deleteEvent = function (event, element, view) {
         $('#deleteEvent').unbind();
         $("#calendar").fullCalendar('removeEvents', $(this).data('id'));
         eventModal.modal('hide');
-        
-        console.log("id!!!", event.id)
 
         //삭제시
         $.ajax({
@@ -113,7 +118,11 @@ var deleteEvent = function (event, element, view) {
                 'id': event.id
             },
             success: function (response) {
-                console.log(response['result'])
+                if (response['result'] == 'success') {
+                    alert(response['msg'])
+                } else {
+                    alert(response['msg'])
+                }
             }
         });
 
