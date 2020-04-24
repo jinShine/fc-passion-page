@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>열정 축구단 소개</title>
+        <link href="{{ url_for('static', filename='css/ui_styles.css') }}" rel="stylesheet" />
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
+
+        <!-- JS -->
+        <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="{{ url_for('static', filename='js/ui_scripts.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/introduce.js') }}"></script>
+    </head>
+    <body>
+        <div id="layoutDefault">
+            <div id="layoutDefault_content">
+                <main>
+                    <!-- Navigation Start-->
+                    <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
+                        <div class="container">
+                            <a class="navbar-brand text-dark" href="/">FC Passion</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto mr-lg-5">
+                                    <li class="nav-item"><a class="nav-link" href="/">홈</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/introduce">소개</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/notice/list">공지사항</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/schedule/list">경기일정</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="/daily-life/list">일상</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                    <!-- Navigation End-->
+
+                    <!-- Banner Start-->
+                    <header class="page-header page-header-dark bg-img-cover overlay overlay-60" style='background-image: url("static/images/slide_image01.jpg")'>
+                        <div class="page-header-content py-15">
+                            <div class="container">
+                                <div class="row text-center">
+                                    <div class="col-xl-12 col-lg-8">
+                                        <h1 class="page-header-title">회원 소개</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="svg-border-rounded text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144.54 17.34" preserveAspectRatio="none" fill="currentColor"><path d="M144.54,17.34H0V0H144.54ZM0,0S32.36,17.34,72.27,17.34,144.54,0,144.54,0"></path></svg>
+                        </div>
+                    </header>
+                    <!-- Banner End-->
+
+                    <section class="bg-white py-3 mt-10 mb-10">
+                        <div class="container">
+                             <!-- Header start -->
+                             <div class="d-flex align-items-center justify-content-between mb-3">
+                                <h2 class="mb-1">회원들</h2>
+                                <div>
+                                    <a class="btn btn-primary d-inline-flex align-items-center" href="#" onclick="emergencyInfo()">비상연락망<i class="ml-1" data-feather="arrow-right"></i></a>
+                                </div>
+                            </div>
+                            <!-- Header end -->
+                            <hr class="mb-4" />
+                            <!-- 회원들 -->
+                            <div class="row" id="member-box">
+                                
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+
+            <!-- Footer Start -->
+            <div id="layoutDefault_footer">
+                <footer class="footer pt-10 pb-5 mt-auto bg-dark footer-dark">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-9">
+                                <div class="footer-brand">CONTACT</div>
+                                <hr class="mt-0 mb-3" />
+                                    <p class="lead mb-0 mb-1">동대문구에서 활동하고 있으며, 지역에 상관없이 가입 및 매치 문의 환영합니다 ^^</p>
+                                    <p class="lead mb-0 mb-1">010-9959-8910</p>
+                                    <a href="mailto:seungjin429@gmail.com" title="(FC_Passion)홈페이지 보고 연락 드렸습니다.">seungjin429@gmail.com</a>
+                                <div class="icon-list-social mt-3 mb-5">
+                                    <a class="icon-list-social-link" href="https://www.instagram.com/fc_passion_jangan/?hl=ko">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-md-6 small">Copyright &copy; Your Website 2020</div>
+                            <div class="col-md-6 text-md-right small">
+                                <a href="javascript:void(0);">Privacy Policy</a>
+                                &middot;
+                                <a href="javascript:void(0);">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- Footer End -->
+
+        </div>
+    </body>
+</html>

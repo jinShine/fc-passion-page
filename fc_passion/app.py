@@ -67,8 +67,51 @@ def login():
         except:
             return jsonify({
                 "result": "failure",
-                "msg": "DB 에러"
+                'msg': 'DB 에러, 관리자에게 문의 바랍니다.'
             })
+
+#########################################################
+# 소개
+@app.route('/introduce', methods=['GET'])
+def introduce_view():
+    return render_template('introduce/introduce.html')
+
+@app.route('/api/introduce/member', methods=['GET'])
+def introduce_list():
+    try:
+        member_list = list(mongo.fcpassion_db().member.find({}, {'_id': False, 'phone': False}))
+    
+        return jsonify({
+            'result': 'success',
+            'data': member_list
+        })
+    except:
+        return jsonify({
+            'result': 'failure',
+            'msg': 'DB 에러, 관리자에게 문의 바랍니다.'
+        })
+
+@app.route('/api/introduce/member-phone', methods=['GET'])
+def emergency_infomation():
+
+    if session.get('logged_in') != True :
+        return jsonify({
+            'result': 'failure',
+            'redirect_url': '/api/login'
+        })
+
+    try:
+        member_list = list(mongo.fcpassion_db().member.find({}, {'_id': False}))
+    
+        return jsonify({
+            'result': 'success',
+            'data': member_list
+        })
+    except:
+        return jsonify({
+            'result': 'failure',
+            'msg': 'DB 에러, 관리자에게 문의 바랍니다.'
+        })
 
 #########################################################
 # 경기 일정
@@ -314,4 +357,4 @@ def daily_life_list_view():
     )
 
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=5117,debug=True)
+    app.run('0.0.0.0',port=5132,debug=True)
