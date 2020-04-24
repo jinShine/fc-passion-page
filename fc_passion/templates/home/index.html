@@ -94,73 +94,23 @@
                         <div class="container">
                             <div class="d-flex align-items-center justify-content-between">
                                 <h2 class="mb-0">경기 일정</h2>
-                                <a class="btn btn-sm btn-primary d-inline-flex align-items-center" href="#!">더 보기<i class="ml-1" data-feather="arrow-right"></i></a>
+                                <a class="btn btn-sm btn-primary d-inline-flex align-items-center" href="/schedule/list">더 보기<i class="ml-1" data-feather="arrow-right"></i></a>
                             </div>
                             <hr class="mb-4" />
                             <div class="row">
+                                {% for schedule in match_schedule_list %}
                                 <div class="col-lg-4 mb-5 mb-lg-5">
-                                    <a class="card lift h-100" href="#!">
-
-                                        <!-- map content start -->
-                                        <div class="text-center">
-                                            <!--Google map-->
-                                            <div id="map-container-google-8" class="z-depth-1-half map-container-5">
-                                            <iframe src="https://maps.google.com/maps?q=Barcelona&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                                frameborder="0" style="border:0;" allowfullscreen>
-                                            </iframe>
-                                            </div>
-                                        </div>
-                                        <!-- map content end -->
-
+                                    <a class="card lift" href="/schedule/list">
                                         <div class="card-body">
-                                            <h3 class="text-primary mb-0">토모 스포츠</h3>
-                                            <div class="small text-gray-800 font-weight-500">4월 30일</div>
-                                            <div class="small text-gray-500">Sartalik, GA</div>
+                                            <h3 class="text-primary mb-0">{{ schedule.title }}</h3>
+                                            {% set date = schedule.start.split('T') %}
+                                            <div class="small text-gray-800 font-weight-600">{{ date[0] }}</div>
+                                            <div class="small text-gray-700 font-weight-500">{{ date[1] }} 시작</div>
+                                            <div class="small text-gray-500">{{ schedule.username }}</div>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-lg-4 mb-5 mb-lg-5">
-                                    <a class="card lift h-100" href="#!">
-
-                                        <!-- map content start -->
-                                        <div class="text-center">
-                                            <!--Google map-->
-                                            <div id="map-container-google-8" class="z-depth-1-half map-container-5">
-                                            <iframe src="https://m.map.naver.com/search2/site.nhn?query=조이전농프라자&sm=sug&style=v5&code=18850843#/map"
-                                                frameborder="0" style="border:0;" allowfullscreen>
-                                            </iframe>
-                                            </div>
-                                        </div>
-                                        <!-- map content end -->
-
-                                        <div class="card-body">
-                                            <h3 class="text-primary mb-0">$556,999</h3>
-                                            <div class="small text-gray-800 font-weight-500">5 bd | 3 ba | 2,420 sqft</div>
-                                            <div class="small text-gray-500">Sartalik, GA</div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="col-lg-4 mb-5 mb-lg-5">
-                                    <a class="card lift h-100" href="#!">
-
-                                        <!-- map content start -->
-                                        <div class="text-center">
-                                            <!--Google map-->
-                                            <div id="map-container-google-8" class="z-depth-1-half map-container-5">
-                                            <iframe src="https://maps.google.com/maps?q=Barcelona&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                                frameborder="0" style="border:0;" allowfullscreen>
-                                            </iframe>
-                                            </div>
-                                        </div>
-                                        <!-- map content end -->
-
-                                        <div class="card-body">
-                                            <h3 class="text-primary mb-0">$556,999</h3>
-                                            <div class="small text-gray-800 font-weight-500">5 bd | 3 ba | 2,420 sqft</div>
-                                            <div class="small text-gray-500">Sartalik, GA</div>
-                                        </div>
-                                    </a>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="svg-border-rounded text-light">
