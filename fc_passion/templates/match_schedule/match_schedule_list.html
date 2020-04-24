@@ -22,7 +22,6 @@
 
         <link rel="stylesheet" href="{{ url_for('static', filename='third-party/calendar/vendor/css/fullcalendar.min.css') }}" />
         <link rel="stylesheet" href="{{ url_for('static', filename='third-party/calendar/css/calendar.css') }}">
-        <!-- <link rel="stylesheet" href="{{ url_for('static', filename='third-party/calendar/vendor/css/bootstrap.min.css') }}"> -->
         <link rel="stylesheet" href="{{ url_for('static', filename='third-party/calendar/vendor/css/select2.min.css') }}" />
         <link rel="stylesheet" href="{{ url_for('static', filename='third-party/calendar/vendor/css/bootstrap-datetimepicker.min.css') }}" />
 
@@ -80,29 +79,27 @@
                                         </div>
                                         <div class="modal-body">
                                             <div class="row">
-                                                <div class="col-xs-12">
-                                                    <label class="col-xs-4" for="edit-title">일정명</label>
-                                                    <input class="inputModal" type="text" name="edit-title" id="edit-title"
-                                                        required="required" />
+                                                <div class="form-group col-md-12">
+                                                    <label class="small text-gray-600" for="edit-title">일정명</label>
+                                                    <input class="form-control" id="match-date" type="text" placeholder="2020-04-29"/>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-xs-12">
-                                                    <label class="col-xs-4" for="edit-start">시작</label>
-                                                    <input class="inputModal" type="text" name="edit-start" id="edit-start" />
+                                                <div class="form-group col-md-12">
+                                                    <label class="small text-gray-600" for="edit-title">시작</label>
+                                                    <input class="form-control" type="text" name="edit-start" id="edit-start" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-xs-12">
-                                                    <label class="col-xs-4" for="edit-end">끝</label>
-                                                    <input class="inputModal" type="text" name="edit-end" id="edit-end" />
+                                                <div class="form-group col-md-12">
+                                                    <label class="small text-gray-600" for="edit-title">끝</label>
+                                                    <input class="form-control" type="text" name="edit-end" id="edit-end" />
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-xs-12">
-                                                    <label class="col-xs-4" for="edit-desc">설명</label>
-                                                    <textarea rows="4" cols="50" class="inputModal" name="edit-desc"
-                                                        id="edit-desc"></textarea>
+                                                <div class="form-group col-md-12">
+                                                    <label class="small text-gray-600" for="edit-title">설명</label>
+                                                    <textarea class="form-control" name="edit-desc" id="edit-desc" rows="5" placeholder="내용을 입력해주세요."></textarea>
                                                 </div>
                                             </div>
                                         </div>

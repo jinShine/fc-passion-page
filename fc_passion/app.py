@@ -314,4 +314,4 @@ def daily_life_list_view():
     )
 
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=5115,debug=True)
+    app.run('0.0.0.0',port=5117,debug=True)
