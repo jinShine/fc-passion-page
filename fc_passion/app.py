@@ -378,7 +378,7 @@ def daily_life_list_view():
     )
 
 if __name__ == '__main__':
-    scheduler.add_job(id = 'Scheduled task', func = insta_api_schedular, trigger = 'cron', day_of_week='sun', hour=4, minute=53)
+    scheduler.add_job(id = 'Scheduled task', func = insta_api_schedular, trigger = 'cron', day_of_week='sun', hour=1, minute=00)
     scheduler.start()
 
     app.run('0.0.0.0',port=5132,debug=True)
