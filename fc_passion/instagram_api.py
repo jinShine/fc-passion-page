@@ -8,9 +8,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 
+
 def insta_fetch_feed():
     
-    data = []
+    result_data = []
     insta_url_list = []
     image_url_list = []
     post_type_list = []
@@ -46,11 +47,12 @@ def insta_fetch_feed():
                 else:
                     post_type_list.append('이미지')
 
-            img_tag = post.select('div > div > img')
+            img_tag = post.select('div > div > a > div > div> img')
             if not img_tag == []:
                 image_url_list.append(img_tag[0].get('src'))
 
-    for insta_url, image_url, post_type in zip(list(set(insta_url_list)), list(set(image_url_list)), post_type_list):
+
+    for insta_url, image_url, post_type in zip(remove_overlap(insta_url_list), remove_overlap(image_url_list), post_type_list):
         post_info = {
             'id': post_id,
             'image_url': image_url,
@@ -58,8 +60,17 @@ def insta_fetch_feed():
             'post_type': post_type
         }
         post_id += 1
-        data.append(post_info)
+        result_data.append(post_info)
 
     browser.quit()
 
-    return data
+    return result_data
+
+
+def remove_overlap(list):
+    new_list = []
+    for v in list:
+        if v not in new_list:
+            new_list.append(v)
+    
+    return new_list

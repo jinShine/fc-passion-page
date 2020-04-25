@@ -1,15 +1,33 @@
-import datetime
-import math
-import config
 from flask import Flask, render_template, jsonify, request, session, url_for, redirect
+from flask_apscheduler import APScheduler
 from db import DB
 from bson.objectid import ObjectId
 from instagram_api import insta_fetch_feed
+import datetime
+import math
+import config
+
 
 app = Flask(__name__)
 app.secret_key = b'1234wqerasdfzxcv' 
 
 mongo = DB()
+scheduler = APScheduler()
+
+#########################################################
+# Schedule Job
+def insta_api_schedular():
+
+    insta_data = insta_fetch_feed()
+    mongo.fcpassion_db().instagram.delete_many({})
+    
+    for data in insta_data:
+        mongo.fcpassion_db().instagram.insert_one({
+            'id': data['id'],
+            'image_url': data['image_url'],
+            'insta_url': data['insta_url'],
+            'post_type': data['post_type']
+        })
 
 #########################################################
 # Home
@@ -17,7 +35,7 @@ mongo = DB()
 def home():
 
     notice_list = mongo.fcpassion_db().notice.find({}, {'_id': False}).sort("date", -1).limit(3)
-    insta_list = mongo.fcpassion_db().instagram.find({}, {'_id': False}).sort("id", -1).limit(12)
+    insta_list = mongo.fcpassion_db().instagram.find({}, {'_id': False}).sort("id", 1).limit(12)
     match_schedule_list = mongo.fcpassion_db().match_schedule.find({}, {'_id': False}).limit(3)
 
     return render_template(
@@ -360,4 +378,8 @@ def daily_life_list_view():
     )
 
 if __name__ == '__main__':
+    scheduler.add_job(id = 'Scheduled task', func = insta_api_schedular, trigger = 'cron', day_of_week='sun', hour=4, minute=53)
+    scheduler.start()
+
     app.run('0.0.0.0',port=5132,debug=True)
+    
