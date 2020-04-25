@@ -336,12 +336,12 @@ def notice_write():
                 "msg": "DB 에러"
             })
 
-@app.route('/notice/detail/<notice_id>', methods=['GET'])
-def notice_detail(notice_id):
+@app.route('/notice/detail/<notice_date>', methods=['GET'])
+def notice_detail(notice_date):
     if request.method == 'GET':
         
         notice_collection = mongo.fcpassion_db().notice
-        notice = notice_collection.find_one({'_id': ObjectId(notice_id)})
+        notice = notice_collection.find_one({'date': notice_date})
 
         return render_template(
             '/notice/notice_detail.html',
