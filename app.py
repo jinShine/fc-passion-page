@@ -31,17 +31,12 @@ def insta_api_schedular():
 
 #########################################################
 # Home
-@app.route('/test')
-def test():
-    return render_template(
-        '/notice/header-basic-signup.html'
-    )
 @app.route('/')
 def home():
 
     notice_list = mongo.fcpassion_db().notice.find({}, {'_id': False}).sort("date", -1).limit(3)
     insta_list = mongo.fcpassion_db().instagram.find({}, {'_id': False}).sort("id", 1).limit(12)
-    match_schedule_list = mongo.fcpassion_db().match_schedule.find({}, {'_id': False}).sort("start", -1).limit(3)
+    match_schedule_list = mongo.fcpassion_db().match_schedule.find({}, {'_id': False}).limit(3)
 
     return render_template(
         'home/index.html',
@@ -386,5 +381,5 @@ if __name__ == '__main__':
     scheduler.add_job(id = 'Scheduled task', func = insta_api_schedular, trigger = 'cron', day_of_week='sun', hour=1, minute=00)
     scheduler.start()
 
-    app.run('0.0.0.0',port=5141,debug=True)
+    app.run('0.0.0.0',port=5000,debug=True)
     

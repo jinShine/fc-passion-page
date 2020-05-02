@@ -13,9 +13,9 @@
         <!-- JS -->
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="{{ url_for('static', filename='js/ui_scripts.js') }}"></script>
         <script src="{{ url_for('static', filename='js/notice.js') }}"></script>
     </head>
@@ -27,9 +27,16 @@
                     <nav class="navbar navbar-marketing navbar-expand-lg bg-white navbar-light">
                         <div class="container">
                             <a class="navbar-brand text-primary" href="/">FC Passion</a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i data-feather="menu"></i></button>
+                            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                                </svg>
+                            </button>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav ml-auto mr-lg-5">
+                                    <li class="nav-item"><a class="nav-link" href="/">홈</a></li>
                                     <li class="nav-item"><a class="nav-link" href="/introduce">소개</a></li>
                                     <li class="nav-item"><a class="nav-link" href="/notice/list">공지사항</a></li>
                                     <li class="nav-item"><a class="nav-link" href="/schedule/list">경기일정</a></li>

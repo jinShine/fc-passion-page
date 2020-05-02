@@ -3,11 +3,11 @@
     * Copyright 2013-2020 Start Bootstrap
     * Licensed under SEE_LICENSE (https://github.com/BlackrockDigital/sb-ui-kit-pro/blob/master/LICENSE)
     */
-    (function($) {
+(function($) {
     "use strict";
 
     // Enable Bootstrap tooltips via data-attributes globally
-    $('[data-toggle="tooltip"]').tooltip();
+    // $('[data-toggle="tooltip"]').tooltip();
 
     // Enable Bootstrap popovers via data-attributes globally
     $('[data-toggle="popover"]').popover();
