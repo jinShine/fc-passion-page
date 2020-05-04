@@ -330,7 +330,6 @@ def notice_list_view():
 @app.route('/api/notice/write', methods=['GET', 'POST'])
 def notice_write():
     if request.method == 'GET':
-        print("!!!", session.get('logged_in'))
         if session.get('logged_in') == None or session['logged_in'] == False:
             return redirect(url_for('login'))
 
@@ -386,5 +385,5 @@ if __name__ == '__main__':
     scheduler.add_job(id = 'Scheduled task', func = insta_api_schedular, trigger = 'cron', day_of_week='sun', hour=1, minute=00)
     scheduler.start()
 
-    app.run('0.0.0.0',port=5141,debug=True)
+    app.run('0.0.0.0',port=5158,debug=True)
     

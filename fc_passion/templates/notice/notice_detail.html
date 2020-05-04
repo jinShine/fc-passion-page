@@ -14,10 +14,12 @@
         <script data-search-pseudo-elements defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="{{ url_for('static', filename='js/ui_scripts.js') }}"></script>
         <script src="{{ url_for('static', filename='js/notice.js') }}"></script>
+        <script src="{{ url_for('static', filename='third-party/autolink/autolink.js') }}"></script>
     </head>
     <body>
         <div id="layoutDefault">
@@ -64,7 +66,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <pre> {{ notice.content }} </pre>
+                                    <pre id="notice-content-body"> {{ notice.content }} </pre>
                                 </div>
                             </div>
                             
