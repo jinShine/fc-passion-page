@@ -3,6 +3,7 @@ from flask_apscheduler import APScheduler
 from db import DB
 from bson.objectid import ObjectId
 from instagram_api import insta_fetch_feed
+from ground_crawling import ReservationGround
 import datetime
 import math
 import config
@@ -381,9 +382,26 @@ def daily_life_list_view():
         insta_list=insta_list
     )
 
+#########################################################
+# 예약하기
+@app.route('/reservation', methods=['GET'])
+def reservation_view():
+    return render_template('/reservation/reservation.html')
+
+@app.route('/reservation/ground', methods=['GET'])
+def reservation():
+    ground_name = request.args.get('ground')
+    print(ground_name)
+
+    reservation_ground = ReservationGround()
+    print(reservation_ground.ground_search(ground_name))
+
+    # return ground_search(auto_login(), ground_name)
+
+
 if __name__ == '__main__':
     scheduler.add_job(id = 'Scheduled task', func = insta_api_schedular, trigger = 'cron', day_of_week='sun', hour=1, minute=00)
     scheduler.start()
 
-    app.run('0.0.0.0',port=5158,debug=True)
+    app.run('0.0.0.0',port=5164,debug=True)
     
