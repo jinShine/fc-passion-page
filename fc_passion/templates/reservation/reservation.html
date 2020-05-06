@@ -20,6 +20,9 @@
         <script src="{{ url_for('static', filename='js/reservation.js') }}"></script>
     </head>
     <body>
+        <div class="spinner-border text-primary loader" id="loader" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
         <div id="layoutDefault">
             <div id="layoutDefault_content">
                 <main>
@@ -60,26 +63,32 @@
                                     <div class="card rounded-lg text-dark">
                                         <div class="card-body">
                                             <form>
-                                                <label class="small text-gray-600" for="leadCapEmail">구장 입력 ex) 토모스포츠클럽</label>
-                                                <div class="form-row justify-content-center">
-                                                    <div class="col-lg-9 col-md-8">
-                                                        <input class="form-control" id="selected-ground" type="text" placeholder="구장을 입력해주세요." />
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-4">
-                                                        <button class="btn btn-teal btn-block btn-marketing rounded-pill" onclick="reserveGround()">Search</button>
+                                                <div class="form-group">
+                                                    <label class="small text-gray-600" for="leadCapEmail">구장 입력 ex) 토모스포츠클럽</label>
+                                                    <div class="form-row justify-content-center">
+                                                        <div class="col-lg-9 col-md-8">
+                                                            <input class="form-control" id="selected-ground" type="text" placeholder="구장을 입력해주세요." />
+                                                        </div>
+                                                        <div class="col-lg-3 col-md-4">
+                                                            <a class="btn btn-teal btn-block btn-marketing rounded-pill" onclick="reserveGround()">Search</a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                
-                                                <!-- <div class="form-group">
-                                                    <label class="small text-gray-600" for="leadCapCompany">내용</label>
-                                                    <textarea class="form-control" id="notice-content" rows="20" placeholder="내용을 입력해주세요."></textarea>
-                                                </div> -->
+                                                <div class="form-group" id="date-box">
+                                                    <label class="small text-gray-600" for="leadCapEmail">날짜 선택</label>
+                                                    <div>
+                                                        <div class="btn-group dropup">
+                                                            <select class="form-control form-control-sm" id="drop-items">
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </form>
+                                            <div>
+                                                <ul id="reservation-date-box">
+                                                </ul>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="float-right">
-                                        <!-- <a class="btn btn-primary d-inline-flex align-items-center mt-3 mr-1" href="/notice/list">취소<i class="ml-1" ></i></a> -->
-                                        <!-- <a class="btn btn-primary d-inline-flex align-items-center mt-3" href="#!" onclick="reserveGround()">등록<i class="ml-1" ></i></a> -->
                                     </div>
                                 </div>
                             </div>

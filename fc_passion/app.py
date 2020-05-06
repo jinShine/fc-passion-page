@@ -14,6 +14,7 @@ app.secret_key = b'1234wqerasdfzxcv'
 
 mongo = DB()
 scheduler = APScheduler()
+rg = ReservationGround()
 
 #########################################################
 # Schedule Job
@@ -34,9 +35,10 @@ def insta_api_schedular():
 # Home
 @app.route('/test')
 def test():
-    return render_template(
-        '/notice/header-basic-signup.html'
-    )
+    return render_template('/error/error_view_404.html')
+    # return render_template(
+    #     '/notice/header-basic-signup.html'
+    # )
 @app.route('/')
 def home():
 
@@ -384,24 +386,37 @@ def daily_life_list_view():
 
 #########################################################
 # 예약하기
-@app.route('/reservation', methods=['GET'])
+@app.route('/reservation', methods=['GET', 'POST'])
 def reservation_view():
-    return render_template('/reservation/reservation.html')
+    if request.method == 'GET':
+        return render_template('/reservation/reservation.html')
+    elif request.method == 'POST':
+        ground_name = request.form.get('ground_name')
+        return jsonify(rg.ground_search(rg.auto_login(), ground_name))
 
-@app.route('/reservation/ground', methods=['GET'])
-def reservation():
-    ground_name = request.args.get('ground')
-    print(ground_name)
+@app.route('/reservation/date', methods=['POST'])
+def reservation_date():
+    if request.method == 'POST':
+        selected_date = request.form.get('date')
+        print("!!!!", selected_date)
+        return jsonify(rg.select_date_info(selected_date))
 
-    reservation_ground = ReservationGround()
-    print(reservation_ground.ground_search(ground_name))
 
-    # return ground_search(auto_login(), ground_name)
+@app.route('/reservation/<selected_date>', methods=['GET'])
+def reservation_selected_date(selected_date):
+    if request.method == 'GET':
+        success = rg.reserve_selected_date(selected_date)
+        
+        if success:
+            return render_template('/reservation/reservation.html')
+        else:
+            return render_template('/error/error_view_404.html')
+
 
 
 if __name__ == '__main__':
     scheduler.add_job(id = 'Scheduled task', func = insta_api_schedular, trigger = 'cron', day_of_week='sun', hour=1, minute=00)
     scheduler.start()
 
-    app.run('0.0.0.0',port=5164,debug=True)
+    app.run('0.0.0.0',port=5209,debug=True)
     

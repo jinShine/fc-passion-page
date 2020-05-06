@@ -9,6 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
 
 
 # APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -21,12 +22,13 @@ from selenium.webdriver.chrome.options import Options
 
 # web driver 설정
 
-ground_dates = []
-results = []
-
-class ReservationGround():
+class ReservationGround:
 
     def __init__(self):
+        self.ground_dates = []
+        self.reservation_results = []
+
+    def setup(self):
         APP_ROOT = os.path.dirname(os.path.abspath(__file__))
         APP_DRIVER = os.path.join(APP_ROOT, config.APP_CONFIG['CHROME_DRIVER_PATH'])
 
@@ -36,28 +38,30 @@ class ReservationGround():
         # chrome_options.add_argument('--headless') # 브라우저를 띄우지 않고 내부적으로 실행 가능
 
         # web driver 설정
-        driver = webdriver.Chrome(APP_DRIVER, options=chrome_options)
-        driver.get(target_url)
+        self.driver = webdriver.Chrome(APP_DRIVER, options=chrome_options)
+        self.driver.get(target_url)
 
     def remove_ad(self):
         try:
-            WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[4]/div[1]'))).click()
+            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[4]/div[1]'))).click()
 
         except:
             print('Time Out')
 
     def auto_login(self):
         try:
-            remove_ad()
+            self.setup()
+
+            self.remove_ad()
 
             # 메뉴버튼(login 화면으로 이동)
             self.driver.implicitly_wait(2)
-            menu_btn = driver.find_element_by_id('navMenu')
+            menu_btn = self.driver.find_element_by_id('navMenu')
             menu_btn.click()
 
             # 카카오 로그인 클릭
             self.driver.implicitly_wait(2)
-            kakao_btn = driver.find_element_by_id('kakao')
+            kakao_btn = self.driver.find_element_by_id('kakao')
             kakao_btn.click()
 
             # Email 입력
@@ -70,15 +74,15 @@ class ReservationGround():
             login_btn.click()
 
             # 리다이렉트로 home화면 올때 광고가 있으면 제거
-            remove_ad()
+            self.remove_ad()
 
             return True
         except:
             return False
 
     
-    def ground_search(self, input_text):
-        if self.auto_login() :
+    def ground_search(self, success, input_text):
+        if success:
             print('성공')
             # 검색 버튼
             
@@ -98,24 +102,74 @@ class ReservationGround():
                     "#cardContainer > div.container.col-md-6.cardHolder.col-double-6 > div.timetable-container.schedule_list.table-786.search-bottom > div.timetable-content.resv-cal > select"
                 ).find_elements_by_tag_name('option')
 
-            ground_dates.clear()
+            self.ground_dates.clear()
             for time_content in timetables:
-                ground_dates.append(time_content.text)
-
-            print(ground_dates)
+                self.ground_dates.append(time_content.text)
 
             return {
                 "result": "success",
-                "data" : ground_dates
+                "data" : self.ground_dates
             }
-            
-            # 해당 날짜 선택 
-            # select_date_info(ground_dates[0])
-            
+
         else:
             return {
-                "result": "failure"
+                "result": "failure",
+                "msg": "데이터 가져오기 실패! 관리자에게 문의 바랍니다."
             }
+    
+    def select_date_info(self, selected_date):
+        self.reservation_results.clear()
+
+        timetables = self.driver.find_element_by_css_selector(
+                    "#cardContainer > div.container.col-md-6.cardHolder.col-double-6 > div.timetable-container.schedule_list.table-786.search-bottom > div.timetable-content.resv-cal > select"
+                ).find_elements_by_tag_name('option')
+
+        for time_content in timetables:
+            if selected_date == time_content.text:
+                time_content.click() # 선택
+                schedules = self.driver.find_element_by_class_name('schedule-view').find_elements_by_class_name('time-container')
+                for sch in schedules:
+                    if sch.get_attribute('resvgroup'):
+                        self.reservation_results.append(sch.get_attribute('offset') + ',' + '예약 가능')
+                    else:
+                        self.reservation_results.append(sch.get_attribute('offset') + ',' + '예약 불가')
+
+        print({selected_date:self.reservation_results})
+
+        return {
+            "result": "success",
+            "data": self.reservation_results
+        }
+
+    def reserve_selected_date(self, selected_date):
+        
+        try:
+            schedules = self.driver.find_element_by_class_name('schedule-view').find_elements_by_class_name('time-container')
+            for sch in schedules:
+                if sch.find_element_by_class_name('badge-number').get_attribute('offset') == selected_date:
+                    sch.click()
+            
+            time.sleep(1)
+            self.driver.find_element_by_id('goToPayment').click();
+
+            # 전체 약관에 모두 동의합니다.
+            time.sleep(1)
+            self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[8]/label').click();
+
+            # 예약 신청 하기
+            self.driver.find_element_by_id('resvSubmit').click();
+            
+            # alert창 확인 버튼
+            # self.driver.switch_to_alert().accept()
+            return True
+        except:
+            return False
+        finally:
+            self.driver.quit()
+
+            
+
+        
 
 
 
