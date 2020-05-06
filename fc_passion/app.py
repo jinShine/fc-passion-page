@@ -35,6 +35,7 @@ def insta_api_schedular():
 # Home
 @app.route('/test')
 def test():
+    rg.auto_friday_reserve()
     return render_template('/error/error_view_404.html')
     # return render_template(
     #     '/notice/header-basic-signup.html'
@@ -406,7 +407,7 @@ def reservation_date():
 def reservation_selected_date(selected_date):
     if request.method == 'GET':
         success = rg.reserve_selected_date(selected_date)
-        
+
         if success:
             return render_template('/reservation/reservation.html')
         else:
@@ -415,7 +416,9 @@ def reservation_selected_date(selected_date):
 
 
 if __name__ == '__main__':
-    scheduler.add_job(id = 'Scheduled task', func = insta_api_schedular, trigger = 'cron', day_of_week='sun', hour=1, minute=00)
+    scheduler.add_job(id = 'insta task', func = insta_api_schedular, trigger = 'cron', day_of_week='sun', hour=1, minute=00)
+    scheduler.add_job(id = 'Saturday task', func = rg.auto_saturday_reserve, trigger = 'cron', day_of_week='fri', hour=00, minute=00)
+    scheduler.add_job(id = 'Friday task', func = rg.auto_friday_reserve, trigger = 'cron', day_of_week='thu', hour=00, minute=00)
     scheduler.start()
 
     app.run('0.0.0.0',port=5209,debug=True)

@@ -12,16 +12,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 
 
-# APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-# APP_DRIVER = os.path.join(APP_ROOT, config.APP_CONFIG['CHROME_DRIVER_PATH'])
-
-# target_url = "http://m.iamground.kr/futsal/search"
-
-# chrome_options = Options()
-# chrome_options.add_argument('--headless') # 브라우저를 띄우지 않고 내부적으로 실행 가능
-
-# web driver 설정
-
 class ReservationGround:
 
     def __init__(self):
@@ -35,7 +25,7 @@ class ReservationGround:
         target_url = "http://m.iamground.kr/futsal/search"
 
         chrome_options = Options()
-        # chrome_options.add_argument('--headless') # 브라우저를 띄우지 않고 내부적으로 실행 가능
+        chrome_options.add_argument('--headless') # 브라우저를 띄우지 않고 내부적으로 실행 가능
 
         # web driver 설정
         self.driver = webdriver.Chrome(APP_DRIVER, options=chrome_options)
@@ -160,120 +150,106 @@ class ReservationGround:
             self.driver.find_element_by_id('resvSubmit').click();
             
             # alert창 확인 버튼
-            # self.driver.switch_to_alert().accept()
+            self.driver.switch_to_alert().accept()
+
+            print("예약 성공!!!!!!")
+
             return True
         except:
             return False
+
         finally:
             self.driver.quit()
 
+    # 토요일 9시(금요일 00시에 예약해야됨)
+    def auto_saturday_reserve(self):
+        if self.auto_login():
+            print('성공')
+            # 검색 버튼
+            
+            search_btn = self.driver.find_element_by_id('filterDirect')
+            search_btn.click()
+            
+            # 검색어에 Input
+            self.driver.find_element_by_id('iSearch').send_keys("토모스포츠클럽")
+
+            # 검색 구장 선택
+            time.sleep(1)
+            ground_list = self.driver.find_element_by_css_selector('#ui-id-1').find_elements_by_tag_name('li')
+            ground_list[0].click()
+
+            # 예약 리스트 보기
+            timetables = self.driver.find_element_by_css_selector(
+                    "#cardContainer > div.container.col-md-6.cardHolder.col-double-6 > div.timetable-container.schedule_list.table-786.search-bottom > div.timetable-content.resv-cal > select"
+                ).find_elements_by_tag_name('option')
+
+            self.ground_dates.clear()
+            for time_content in timetables:
+                self.ground_dates.append(time_content.text)
+
+            # 마지막 값 날짜 선택
+            last_date = self.ground_dates[-1]
+
+            self.reservation_results.clear()
+
+            timetables = self.driver.find_element_by_css_selector(
+                        "#cardContainer > div.container.col-md-6.cardHolder.col-double-6 > div.timetable-container.schedule_list.table-786.search-bottom > div.timetable-content.resv-cal > select"
+                    ).find_elements_by_tag_name('option')
+
+            # 날짜 선택
+            for time_content in timetables:
+                if last_date == time_content.text:
+                    time_content.click() # 선택
+
+
+            # 시간 선택 - 9시
+            self.reserve_selected_date("2100")
+            
+    # 금요일 10시(목요일 00시에 예약해야됨)
+    def auto_friday_reserve(self):
+        if self.auto_login():
+            print('성공')
+            # 검색 버튼
+            
+            search_btn = self.driver.find_element_by_id('filterDirect')
+            search_btn.click()
+            
+            # 검색어에 Input
+            self.driver.find_element_by_id('iSearch').send_keys("토모스포츠클럽")
+
+            # 검색 구장 선택
+            time.sleep(1)
+            ground_list = self.driver.find_element_by_css_selector('#ui-id-1').find_elements_by_tag_name('li')
+            ground_list[0].click()
+
+            # 예약 리스트 보기
+            timetables = self.driver.find_element_by_css_selector(
+                    "#cardContainer > div.container.col-md-6.cardHolder.col-double-6 > div.timetable-container.schedule_list.table-786.search-bottom > div.timetable-content.resv-cal > select"
+                ).find_elements_by_tag_name('option')
+
+            self.ground_dates.clear()
+            for time_content in timetables:
+                self.ground_dates.append(time_content.text)
+
+            # 마지막 값 날짜 선택
+            last_date = self.ground_dates[-1]
+
+            self.reservation_results.clear()
+
+            timetables = self.driver.find_element_by_css_selector(
+                        "#cardContainer > div.container.col-md-6.cardHolder.col-double-6 > div.timetable-container.schedule_list.table-786.search-bottom > div.timetable-content.resv-cal > select"
+                    ).find_elements_by_tag_name('option')
+
+            # 날짜 선택
+            for time_content in timetables:
+                if last_date == time_content.text:
+                    time_content.click() # 선택
+
+
+            # 시간 선택 - 10시
+            self.reserve_selected_date("2200")
+
+
+
             
 
-        
-
-
-
-# # 팝업 광고 제거
-# def remove_ad():
-#     try:
-#         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[4]/div[1]'))).click()
-
-#     except:
-#         print('Time Out')
-
-# def auto_login():
-
-#     # web driver 설정
-#     driver = webdriver.Chrome(APP_DRIVER, options=chrome_options)
-#     driver.get(target_url)
-
-#     try:
-#         remove_ad()
-        
-#         # 메뉴버튼(login 화면으로 이동)
-#         driver.implicitly_wait(2)
-#         menu_btn = driver.find_element_by_id('navMenu')
-#         menu_btn.click()
-
-#         # 카카오 로그인 클릭
-#         driver.implicitly_wait(2)
-#         kakao_btn = driver.find_element_by_id('kakao')
-#         kakao_btn.click()
-
-#         # Email 입력
-#         driver.find_element_by_id('id_email_2').send_keys(config.APP_CONFIG['K_ID'])
-#         # PW 입력
-#         driver.find_element_by_id('id_password_3').send_keys(config.APP_CONFIG['K_PW'])
-
-#         # 로그인 클릭
-#         login_btn = driver.find_element_by_class_name('submit')
-#         login_btn.click()
-
-#         # 리다이렉트로 home화면 올때 광고가 있으면 제거
-#         remove_ad()
-
-#         return True
-#     except:
-#         return False
-
-
-# def ground_search(success, input_text):
-#     if success:
-#         print('성공')
-#         # 검색 버튼
-#         search_btn = driver.find_element_by_id('filterDirect')
-#         search_btn.click()
-        
-#         # 검색어에 Input
-#         driver.find_element_by_id('iSearch').send_keys(input_text)
-
-#         # 검색 구장 선택
-#         time.sleep(1)
-#         ground_list = driver.find_element_by_css_selector('#ui-id-1').find_elements_by_tag_name('li')
-#         ground_list[0].click()
-
-#         # 예약 리스트 보기
-#         timetables = driver.find_element_by_css_selector(
-#                 "#cardContainer > div.container.col-md-6.cardHolder.col-double-6 > div.timetable-container.schedule_list.table-786.search-bottom > div.timetable-content.resv-cal > select"
-#             ).find_elements_by_tag_name('option')
-
-#         ground_dates.clear()
-#         for time_content in timetables:
-#             ground_dates.append(time_content.text)
-
-#         print(ground_dates)
-
-#         return {
-#             "result": "success",
-#             "data" : ground_dates
-#         }
-        
-#         # 해당 날짜 선택 
-#         # select_date_info(ground_dates[0])
-        
-#     else:
-#         return {
-#             "result": "failure"
-#         }
-
-# def select_date_info(selected_date):
-#     timetables = driver.find_element_by_css_selector(
-#                 "#cardContainer > div.container.col-md-6.cardHolder.col-double-6 > div.timetable-container.schedule_list.table-786.search-bottom > div.timetable-content.resv-cal > select"
-#             ).find_elements_by_tag_name('option')
-
-#     for time_content in timetables:
-#         if selected_date == time_content.text:
-#             time_content.click() # 선택
-#             schedules = driver.find_element_by_class_name('schedule-view').find_elements_by_class_name('time-container')
-#             for sch in schedules:
-#                 if sch.get_attribute('resvgroup'):
-#                     results.append(sch.get_attribute('offset') + ',' + '예약 가능')
-#                 else:
-#                     results.append(sch.get_attribute('offset') + ',' + '예약 불가')
-
-#             print({selected_date:results})
-    
-    
-
-# auto_login()
-# ground_search(auto_login(), "토모스포츠클럽")
