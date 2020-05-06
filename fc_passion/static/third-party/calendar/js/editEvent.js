@@ -91,6 +91,10 @@ var editEvent = function (event, element, view) {
             },
             success: function (response) {
                 if (response['result'] == 'success') {
+                    if (response['redirect']) {
+                        window.location.href = response['redirect']
+                        return
+                    }
                     alert(response['msg'])
                 } else {
                     alert(response['msg'])
@@ -119,6 +123,10 @@ var deleteEvent = function (event, element, view) {
             },
             success: function (response) {
                 if (response['result'] == 'success') {
+                    if (response['redirect']) {
+                        window.location.href = response['redirect']
+                        return
+                    }
                     alert(response['msg'])
                 } else {
                     alert(response['msg'])

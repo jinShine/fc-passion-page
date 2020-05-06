@@ -171,6 +171,9 @@ def schedule_list():
 @app.route('/schedule/write', methods=['GET', 'POST'])
 def schedule_write_view():
     if request.method == 'GET':
+        if session.get('logged_in') == None or session['logged_in'] == False:
+            return redirect(url_for('login'))
+
         return render_template('match_schedule/match_schedule_write.html')
     elif request.method == 'POST':
 
@@ -212,8 +215,13 @@ def schedule_write_view():
             })
 
 @app.route('/schedule/delete', methods=['POST'])
-def schedule_delite():
+def schedule_delete():
     if request.method == 'POST':
+        if session.get('logged_in') == None or session['logged_in'] == False:
+            return jsonify({
+                'result': 'success',
+                'redirect': '/api/login'
+            })
 
         schedule_id = request.form.get('id')
 
@@ -233,6 +241,12 @@ def schedule_delite():
 @app.route('/schedule/update', methods=['POST'])
 def schedule_update():
     if request.method == 'POST':
+
+        if session.get('logged_in') == None or session['logged_in'] == False:
+            return jsonify({
+                'result': 'success',
+                'redirect': '/api/login'
+            })
 
         schedule_id = request.form.get('id')
         schedule_title = request.form.get('title')
@@ -390,6 +404,8 @@ def daily_life_list_view():
 @app.route('/reservation', methods=['GET', 'POST'])
 def reservation_view():
     if request.method == 'GET':
+        if session.get('logged_in') == None or session['logged_in'] == False:
+            return redirect(url_for('login'))
         return render_template('/reservation/reservation.html')
     elif request.method == 'POST':
         ground_name = request.form.get('ground_name')
@@ -421,5 +437,5 @@ if __name__ == '__main__':
     scheduler.add_job(id = 'Friday task', func = rg.auto_friday_reserve, trigger = 'cron', day_of_week='thu', hour=00, minute=00)
     scheduler.start()
 
-    app.run('0.0.0.0',port=5209,debug=True)
+    app.run('0.0.0.0',port=5210,debug=True)
     
