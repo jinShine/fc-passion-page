@@ -26,9 +26,14 @@ class ReservationGround:
 
         chrome_options = Options()
         chrome_options.add_argument('--headless') # 브라우저를 띄우지 않고 내부적으로 실행 가능
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.add_argument("--disable-extensions")
+        chrome_options.add_argument("--no-sandbox")
+        # chrome_options.add_argument("window-size=300x920");
 
         # web driver 설정
         self.driver = webdriver.Chrome(APP_DRIVER, options=chrome_options)
+        # self.driver.set_window_size(300, 920)
         self.driver.get(target_url)
 
     def remove_ad(self):
@@ -143,14 +148,14 @@ class ReservationGround:
             self.driver.find_element_by_id('goToPayment').click();
 
             # 전체 약관에 모두 동의합니다.
-            time.sleep(1)
-            self.driver.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[8]/label').click();
+            WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div[2]/div[2]/div[8]/label'))).click()
+
 
             # 예약 신청 하기
-            self.driver.find_element_by_id('resvSubmit').click();
+            #self.driver.find_element_by_id('resvSubmit').click();
             
             # alert창 확인 버튼
-            self.driver.switch_to_alert().accept()
+            # self.driver.switch_to_alert().accept()
 
             print("예약 성공!!!!!!")
 

@@ -41,7 +41,6 @@ function reserveGround() {
 
 function selectedChange() {
     
-    
     $("#drop-items").change(function () {
 
         $('#loader').show();
