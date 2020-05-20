@@ -20,7 +20,10 @@ class ReservationGround:
 
     def setup(self):
         APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-        APP_DRIVER = os.path.join(APP_ROOT, config.APP_CONFIG['CHROME_DRIVER_PATH'])
+        if '/Users/jinnify' in APP_ROOT:
+            APP_DRIVER = os.path.join(APP_ROOT, config.APP_CONFIG['CHROME_DRIVER_TEST_PATH'])
+        else:
+            APP_DRIVER = os.path.join(APP_ROOT, config.APP_CONFIG['CHROME_DRIVER_PATH'])
 
         target_url = "http://m.iamground.kr/futsal/search"
 
@@ -29,7 +32,6 @@ class ReservationGround:
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--disable-extensions")
         chrome_options.add_argument("--no-sandbox")
-        # chrome_options.add_argument("window-size=300x920");
 
         # web driver 설정
         self.driver = webdriver.Chrome(APP_DRIVER, options=chrome_options)

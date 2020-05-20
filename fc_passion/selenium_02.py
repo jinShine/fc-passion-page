@@ -10,8 +10,11 @@ from bs4 import BeautifulSoup
 
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-APP_DRIVER = os.path.join(APP_ROOT, config.APP_CONFIG['CHROME_DRIVER_PATH'])
-
+if '/Users/jinnify' in APP_ROOT:
+    APP_DRIVER = os.path.join(APP_ROOT, config.APP_CONFIG['CHROME_DRIVER_TEST_PATH'])
+else:
+    APP_DRIVER = os.path.join(APP_ROOT, config.APP_CONFIG['CHROME_DRIVER_PATH'])
+    
 chrome_options = Options()
 chrome_options.add_argument('--headless') # 브라우저를 띄우지 않고 내부적으로 실행 가능
 

@@ -18,10 +18,16 @@ def insta_fetch_feed():
     post_id = 1
 
     APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-    APP_DRIVER = os.path.join(APP_ROOT, config.APP_CONFIG['CHROME_DRIVER_PATH'])
+    if '/Users/jinnify' in APP_ROOT:
+        APP_DRIVER = os.path.join(APP_ROOT, config.APP_CONFIG['CHROME_DRIVER_TEST_PATH'])
+    else:
+        APP_DRIVER = os.path.join(APP_ROOT, config.APP_CONFIG['CHROME_DRIVER_PATH'])
 
     chrome_options = Options()
     chrome_options.add_argument('--headless') # 브라우저를 띄우지 않고 내부적으로 실행 가능
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--disable-extensions")
+    chrome_options.add_argument("--no-sandbox")
 
     # web driver 설정
     browser = webdriver.Chrome(APP_DRIVER, options=chrome_options)

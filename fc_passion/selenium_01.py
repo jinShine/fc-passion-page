@@ -4,7 +4,10 @@ from selenium import webdriver
 
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-APP_DRIVER = os.path.join(APP_ROOT, config.APP_CONFIG['CHROME_DRIVER_PATH'])
+if '/Users/jinnify' in APP_ROOT:
+    APP_DRIVER = os.path.join(APP_ROOT, config.APP_CONFIG['CHROME_DRIVER_TEST_PATH'])
+else:
+    APP_DRIVER = os.path.join(APP_ROOT, config.APP_CONFIG['CHROME_DRIVER_PATH'])
 
 # web driver 설정
 browser = webdriver.Chrome(APP_DRIVER)
