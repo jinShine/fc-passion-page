@@ -154,10 +154,10 @@ class ReservationGround:
 
 
             # 예약 신청 하기
-            #self.driver.find_element_by_id('resvSubmit').click();
+            self.driver.find_element_by_id('resvSubmit').click();
             
             # alert창 확인 버튼
-            # self.driver.switch_to_alert().accept()
+            self.driver.switch_to_alert().accept()
 
             print("예약 성공!!!!!!")
 
