@@ -437,5 +437,5 @@ if __name__ == '__main__':
     scheduler.add_job(id = 'Friday task', func = rg.auto_friday_reserve, trigger = 'cron', day_of_week='thu', hour=00, minute=00)
     scheduler.start()
 
-    app.run('0.0.0.0',port=5210,debug=True)
+    app.run('0.0.0.0',port=5000,debug=True)
     
