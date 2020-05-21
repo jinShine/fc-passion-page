@@ -28,7 +28,7 @@ class ReservationGround:
         target_url = "http://m.iamground.kr/futsal/search"
 
         chrome_options = Options()
-        # chrome_options.add_argument('--headless') # 브라우저를 띄우지 않고 내부적으로 실행 가능
+        chrome_options.add_argument('--headless') # 브라우저를 띄우지 않고 내부적으로 실행 가능
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--disable-extensions")
         chrome_options.add_argument("--no-sandbox")
