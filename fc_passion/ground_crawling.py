@@ -28,7 +28,7 @@ class ReservationGround:
         target_url = "http://m.iamground.kr/futsal/search"
 
         chrome_options = Options()
-        chrome_options.add_argument('--headless') # 브라우저를 띄우지 않고 내부적으로 실행 가능
+        # chrome_options.add_argument('--headless') # 브라우저를 띄우지 않고 내부적으로 실행 가능
         chrome_options.add_argument("--disable-gpu")
         chrome_options.add_argument("--disable-extensions")
         chrome_options.add_argument("--no-sandbox")
@@ -154,19 +154,23 @@ class ReservationGround:
 
 
             # 예약 신청 하기
-            #self.driver.find_element_by_id('resvSubmit').click();
+            self.driver.find_element_by_id('resvSubmit').click();
             
             # alert창 확인 버튼
-            # self.driver.switch_to_alert().accept()
+            self.driver.switch_to_alert().accept()
 
+            time.sleep(1)
+            self.driver.find_element_by_id('resvClose').click();
+            self.driver.quit()
             print("예약 성공!!!!!!")
 
             return True
         except:
+            self.driver.quit()
             return False
 
-        finally:
-            self.driver.quit()
+        # finally:
+        #     # self.driver.quit()
 
     # 토요일 9시(금요일 00시에 예약해야됨)
     def auto_saturday_reserve(self):
