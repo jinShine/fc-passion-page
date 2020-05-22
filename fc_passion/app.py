@@ -4,7 +4,7 @@ from db import DB
 from bson.objectid import ObjectId
 from instagram_api import insta_fetch_feed
 from ground_crawling import ReservationGround
-import datetime
+import date_module
 import math
 import config
 
@@ -33,19 +33,12 @@ def insta_api_schedular():
 
 #########################################################
 # Home
-@app.route('/test')
-def test():
-    rg.auto_friday_reserve()
-    return render_template('/error/error_view_404.html')
-    # return render_template(
-    #     '/notice/header-basic-signup.html'
-    # )
 @app.route('/')
 def home():
 
     notice_list = mongo.fcpassion_db().notice.find({}, {'_id': False}).sort("date", -1).limit(3)
     insta_list = mongo.fcpassion_db().instagram.find({}, {'_id': False}).sort("id", 1).limit(12)
-    match_schedule_list = mongo.fcpassion_db().match_schedule.find({}, {'_id': False}).sort("start", -1).limit(3)
+    match_schedule_list = mongo.fcpassion_db().match_schedule.find({}, {'_id': False}).sort("start", -1).limit(6)
 
     return render_template(
         'home/index.html',
@@ -189,6 +182,12 @@ def schedule_write_view():
         start = input_date + 'T' + start_time
         end = input_date + 'T' + end_time
 
+        year = input_date.split('-')[0]
+        month = input_date.split('-')[1]
+        day = input_date.split('-')[2]
+
+        dayOfWeek = date_module.day_of_the_week(year, month, day)
+
         list_count = len(list(mongo.fcpassion_db().match_schedule.find({}, {'_id': False})))
         schdule_id = str(list_count + 1)
 
@@ -199,6 +198,7 @@ def schedule_write_view():
                 "description": input_description,
                 "start": start,
                 "end": end,
+                "dayOfWeek": dayOfWeek,
                 "type": "카테고리1",
                 "username": "관리자",
                 "backgroundColor": "#D25565",
@@ -356,7 +356,7 @@ def notice_write():
         name = session['name']
         title = request.form.get('input_title')
         content = request.form.get('input_content')
-        now = str(datetime.datetime.now()).split('.')[0]
+        now = str(date_module.now()).split('.')[0]
     
         try:
             mongo.fcpassion_db().notice.insert_one({
@@ -434,7 +434,7 @@ def reservation_selected_date(selected_date):
 if __name__ == '__main__':
     scheduler.add_job(id = 'insta task', func = insta_api_schedular, trigger = 'cron', day_of_week='sun', hour=1, minute=00)
     scheduler.add_job(id = 'Saturday task', func = rg.auto_saturday_reserve, trigger = 'cron', day_of_week='fri', hour=00, minute=00)
-    scheduler.add_job(id = 'Friday task', func = rg.auto_friday_reserve, trigger = 'cron', day_of_week='fri', hour=2, minute=18)
+    scheduler.add_job(id = 'Friday task', func = rg.auto_friday_reserve, trigger = 'cron', day_of_week='thu', hour=0, minute=00)
     scheduler.start()
     
     app.run('0.0.0.0',port=5000,debug=True)

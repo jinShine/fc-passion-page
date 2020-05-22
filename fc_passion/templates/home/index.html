@@ -111,7 +111,7 @@
                                         <div class="card-body">
                                             <h3 class="text-primary mb-0">{{ schedule.title }}</h3>
                                             {% set date = schedule.start.split('T') %}
-                                            <div class="small text-gray-800 font-weight-600">{{ date[0] }}</div>
+                                            <div class="small text-gray-800 font-weight-600">{{ date[0] + " (" + schedule.dayOfWeek + ")"}}</div>
                                             <div class="small text-gray-700 font-weight-500">{{ date[1] }} 시작</div>
                                             <div class="small text-gray-500">{{ schedule.username }}</div>
                                         </div>
