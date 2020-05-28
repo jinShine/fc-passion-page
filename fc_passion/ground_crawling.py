@@ -172,7 +172,7 @@ class ReservationGround:
         # finally:
         #     # self.driver.quit()
 
-    # 토요일 9시(금요일 00시에 예약해야됨)
+    # 토요일 21시(금요일 00시에 예약해야됨)
     def auto_saturday_reserve(self):
         if self.auto_login():
             print('성공')
@@ -213,10 +213,10 @@ class ReservationGround:
                     time_content.click() # 선택
 
 
-            # 시간 선택 - 9시
+            # 시간 선택 - 21시
             self.reserve_selected_date("2100")
             
-    # 금요일 10시(목요일 00시에 예약해야됨)
+    # 금요일 23시(목요일 00시에 예약해야됨)
     def auto_friday_reserve(self):
         if self.auto_login():
             print('성공')
@@ -257,7 +257,7 @@ class ReservationGround:
                     time_content.click() # 선택
 
 
-            # 시간 선택 - 10시
+            # 시간 선택 - 23시
             self.reserve_selected_date("2300")
 
 
