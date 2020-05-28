@@ -258,7 +258,7 @@ class ReservationGround:
 
 
             # 시간 선택 - 10시
-            self.reserve_selected_date("2200")
+            self.reserve_selected_date("2300")
 
 
 
