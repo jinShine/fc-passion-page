@@ -433,8 +433,8 @@ def reservation_selected_date(selected_date):
 
 if __name__ == '__main__':
     scheduler.add_job(id = 'insta task', func = insta_api_schedular, trigger = 'cron', day_of_week='sun', hour=1, minute=00)
-    scheduler.add_job(id = 'Saturday task', func = rg.auto_saturday_reserve, trigger = 'cron', day_of_week='fri', hour=00, minute=00)
-    scheduler.add_job(id = 'Friday task', func = rg.auto_friday_reserve, trigger = 'cron', day_of_week='thu', hour=0, minute=00)
+    #scheduler.add_job(id = 'Saturday task', func = rg.auto_saturday_reserve, trigger = 'cron', day_of_week='fri', hour=00, minute=00)
+    #scheduler.add_job(id = 'Friday task', func = rg.auto_friday_reserve, trigger = 'cron', day_of_week='thu', hour=0, minute=00)
     scheduler.start()
     
     app.run('0.0.0.0',port=5000,debug=True)
