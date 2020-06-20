@@ -57,12 +57,20 @@ function emergencyInfo() {
 
 function makeMemeberBox(name, phone) {
     let memberTag;
+    let image;
+
+    if (name == "이현승") {
+        console.log("이현승")
+        image = "/static/images/hyunseung.png";
+    } else {
+        image = "/static/images/avatar.png";
+    }
 
     if (phone == null) {
         memberTag = '<div class="col-lg-3 col-md-6 mb-5">\
                         <a class="card lift border-bottom-lg border-purple" href="#!">\
                             <div class="card-body text-center">\
-                                <img src="/static/images/avatar.png" width="100px" height="100px"></img>\
+                                <img src=' + '"' + image + '" ' + 'width="100px" height="100px"></img>\
                                 <div class="text-gray-800 mt-3"><b>' + name + '</b></div>\
                             </div>\
                         </a>\
@@ -71,7 +79,7 @@ function makeMemeberBox(name, phone) {
         memberTag = '<div class="col-lg-3 col-md-6 mb-5">\
                         <a class="card lift border-bottom-lg border-purple" href="#!">\
                             <div class="card-body text-center">\
-                                <img src="/static/images/avatar.png" width="100px" height="100px"></img>\
+                                <img src=' + '"' + image + '" ' + 'width="100px" height="100px"></img>\
                                 <div class="text-gray-800 mt-3"><b>' + name + '</b></div>\
                                 <div class="small text-gray-600 mt-1">' + phone + '</div>\
                             </div>\
